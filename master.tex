@@ -1,0 +1,59 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%        RIVAL REGIONS TUTORIAL
+%%%%
+%%%%    Author   : Bèrg C
+%%%%    Version  : see preamble.tex
+%%%%
+%%%%    Notes    : This code is delivered as is,
+%%%%            and without any warranty.
+%%%%            Feel free to modify and share.
+%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper]{article}
+
+\input{preamble}
+
+\begin{document}
+
+\begin{titlepage}
+    \fontfamily{stix}\selectfont
+    \centering
+    \vspace*{0.5 cm}
+    % \includegraphics[width = 8cm]{rr_logo.png} \\ [1.0 cm]
+    \rule{\linewidth}{0.2 mm} \\ [0.4 cm]
+    {\fontsize{34}{34}\selectfont\thetitle} \\
+    \rule{\linewidth}{0.2 mm} \\ [1.5 cm]
+
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushleft} \large
+            Auteur: \\
+            \theauthor
+        \end{flushleft}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright} \large
+            Versie: \\
+            \theversion
+        \end{flushright}
+    \end{minipage} \\ [2 cm]
+    \large\thedate
+\end{titlepage}
+
+
+\input{docs/intro}
+\begingroup
+    \titleformat{\section}[hang]
+        {\rmfamily\Large\uppercase}
+        {\thesection}
+        {8ex}
+        {}
+
+    \let\clearpage\relax
+    \tableofcontents
+\endgroup
+\newpage
+
+%\input{docs/file}
+\horrule
+\end{document}

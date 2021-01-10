@@ -1,0 +1,100 @@
+
+%%%%%%% Packages %%%%%%%
+
+\usepackage[dutch]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% micro-typographic extensions
+\usepackage{microtype}
+% Allow collumns in page
+\usepackage{multicol}
+% Table options
+\usepackage{booktabs}
+
+%%%%%%% Settings %%%%%%%
+
+% Metadata
+\title{ADS samenvatting}
+\author{Joost Sijm}
+\date{\today}
+\newcommand{\theversion}{v0.1}
+
+% Set variables
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+% Font
+\usepackage[scaled]{berasans}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage{tgschola}
+
+% Title
+\usepackage{titlesec}
+\titleformat{\section}[runin]
+    {\rmfamily\Large\uppercase}
+    {\thesection}
+    {1ex}
+    {}
+
+\titleformat{\subsection}[runin]
+    {\rmfamily\large\uppercase}
+    {\thesubsection}
+    {1ex}
+    {}
+
+\titleformat{\subsubsection}[runin]
+    {\rmfamily\normalsize\uppercase}
+    {\thesubsubsection}
+    {1ex}
+    {}
+
+%%%%%%% Commands %%%%%%%
+
+\newcommand{\premium}{{\fontfamily{lmr}\selectfont$\star$\hspace{1ex}}}
+\newcommand{\state}{Verenigde Nederlanden}
+\newcommand{\horrule}{\par\noindent\rule{\textwidth}{0.4pt}}
+
+%%%%%%% Rest     %%%%%%%
+
+\usepackage[a5paper, margin=1cm, bottom=2cm]{geometry}
+
+% For titlepage image
+\usepackage{graphicx}
+\graphicspath{{figs/}}
+
+\usepackage[
+    xetex,
+    hidelinks,
+    pdfauthor={\theauthor},
+    pdftitle={\thetitle{} \theversion},
+    pdfsubject={Tutorial voor beginnende en ervaren spelers},
+    pdfkeywords={tutorial, rival regions},
+    pdfproducer={XeTeX},
+    pdfcreator={xelatex}
+]{hyperref}
+
+% TOC title
+\usepackage{titletoc}
+\titlecontents{section}
+    [15pt]
+    {\bigskip\rmfamily\Large}
+    {\contentslabel{15pt}}
+    {\fbox{\hspace*{2.3em}\rule{2.3em}{2pt}}}
+    {\titlerule*[1em]{}\contentspage}
+
+\titlecontents{subsection}
+    [35pt]
+    {\rmfamily}
+    {\contentslabel{25pt}}
+    {}
+    {\titlerule*[1em]{.}\contentspage\nobreak}
+
+\titlecontents{subsubsection}
+    [55pt]
+    {\rmfamily}
+    {\contentslabel{35pt}}
+    {}
+    {\titlerule*[1em]{.}\contentspage\nobreak}
