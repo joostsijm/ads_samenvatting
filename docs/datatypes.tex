@@ -1,2 +1,39 @@
 \section{datatypes}
+Datatypes zoals ArrayList, LinkedList, Stack, Queue, Priority Queue, Heap, Sets, en Maps worden in dit hoofdstuk besproken.
 % List, ArrayList, LinkedList, Stack, Queue, Priority Queue, Heap, Sets, Maps
+
+\subsection{List}
+Een list is een abstract data type, omdat het op meerdere manier geimplementeerd kan worden
+In Java is hier voor een ArrayList en een Linkedlist.
+
+\subsubsection{ArrayList}
+Dit is een list gebaseerd op een array, de array houd de informatie vast.
+Door middel van een variable \textit{Lenghte} weet je waar het laatste item van je collectie is.
+In de construtor van de klasse initialiseer je de array met een zelf bepaalde lengte.
+\textbf{Toevoegen} gebeurt door eerst \textit{length} te vergelijken met de lengte van de array.
+Wanneer \textit{length} gelijk is maak je een nieuwe array aan met de dubbele lengte van de huidige array.
+Daarna kopier je de waardes van de oude array, en vervang je hem.
+Vervolgens kan je op de index van \textit{length} de nieuwe waarde toevoegen.
+\textbf{Verwijderen}, check eerst of de gegeven index lager is dan \textit{length}.
+Verplaats alle elementen die na de gegeven index komen een terug, en verlaag \textit{length} met een.
+
+\subsubsection{LinkedList}
+Gebruikt geen array, maar nodes die onderling aan elkaar gelinked zijn.
+Deze node is een prive klasse die de waarde vasthoud en een \textit{next} property heeft naar de volgende node.
+De list zelf houd een referentie naar de eerste, \textit{head}, en laatste, \textit{tail}, node bij.
+\textbf{Add} maak een node aan met de opgegeven waarde.
+Controller of \textit{head} bestaat, zo niet verwijst die naar deze node.
+Anders wordt de node toevegoed aan de \textit{next} van van \textit{tail}
+Vervolgens wordt \textit{tail} vervangen met de nieuwe node.
+\textbf{Get} voor het terughalen van een index begin je bij \textit{head} en tel je \textit{next} tot je bij de gewenste index bent.
+\textbf{Exists}, loop over de nodes van af \textit{head}, wanneer er een match is return \textit{true}, als er geen match is return \textit{false}.
+\textbf{Delete} van af head lopen naar de gewenste node, onthoud de laatst bezichte node. Bij de gewenste index laat de \textit{next} van laatst bezochte node verwijzen naar de \textit{next} van de matchende node.
+
+Er bestaan verschillende types.
+\textbf{Singular}: iedere node refereerd naar de volgende node in de list.
+\textbf{Double}: iedere node refereerd ook naar de vorige node in de list.
+\textbf{Circular}: de laastste node refereerd naar de eerste node in de list.
+
+\subsubsection{Vergelijking}
+\textbf{ArrayList} heeft fixed lengte, snelle directe toegang, moeilijker toevoegen en verwijderen, altijd te veel of te weinig geheugen.
+\textbf{LinkedList} heeft een variable lengte, makkelijk groeien en verkleinen, geen directe toegang, makkelijk toevoegen / verwijderen, objecten niet uitgelijnd in geheugen.

@@ -230,6 +230,71 @@ Recursie gebrui
 * 3, lecture 3, 2020-09-16
 List, ArrayList, LinkedList, Linear Search, Binary Search
 
+01:00
+List
+    - is een abstracte data type
+    - omdat je het op meerdere manieren geimplementeerd kan worden
+
+05:00?
+ArrayList
+    - een list gebaseerd op een array
+    - door middel van een lengte variable hou je het laatste element in de array bij
+    - constructor
+        - initialiseer array (met zelf bedachte lengte, en lengte variable
+    - toevoegen
+        - Vergelijking lengte variable met lengte van de array
+        - wanneer dat groter is maak nieuwe array met dubbele grote en vervang oude array
+    - verwijderen
+        - check opgegeven index
+        - verplaats alle elementen die na de index komen een terug
+        - verlaag de lengte variable met een
+
+65:00
+LinkedList
+    - gebruikt geen array 
+    - elementen worden in nodes opgeslagen die onderling gelinked zijn
+    - node is een prive klasse binnen de lijst klasse en heef een next propertie naar de volgende node
+    - list houdt de eerst en laatste node bij
+    - toevoegen
+        - node aanmaken en als er nog geen nodes bestaan toevoegen als head node
+        - anders aan de next laatste node toevoegen
+        - laatste node vervangen met nieuwe node
+    - terughalen
+        - begin bij head en blijf optellen naar de volgende node
+        - return node wanneer gewenste index is bereikt
+    - exists
+        - loop van af head over next, als er een match is return true
+        - anders return false
+    - delete
+        - van af head lopen naar gewenste node
+        - laatste bezichte node bijhouden
+        - wanneer er een match is laat de laatste bezochte node naar de next node verwijzen
+    - types
+        - singular: ieder node refereerd naar de volgende node
+        - double: iedere node refereerd naar de volgeende en vorige node
+        - circular: de laatste node refereerd weer naar de eerste node
+
+voordeel
+    - linkedList
+        - toevoegen sneller, hoeft geen array gecopieerd te worden
+        - delete sneller, kleine verandering, begin van collectie is beter
+    - arrayList
+        - get en exists sneller, kan direct index opvragen
+        - delete langszamer, veer variablen verplaatsen, einde van collectie is beter
+
+Linear search
+    - begin aan de voorkant en checkt iedere variable tot laatste item
+    - snelheid afhankelijk van positie in collectie
+
+96:00
+Binary search
+    - de collectie waar in je zoekt moet gesorteerd zijn
+    - split de collectie in tweeën
+    - als de waarde lager / hoger dan het midden is, split dan de lage / hoge helft 
+    - tot dat je bij het doel uitkomt
+
+
+
 * 4, lecture 4, 2020-09-23
 Big-O efficiency, simple sorts, comparator
 
