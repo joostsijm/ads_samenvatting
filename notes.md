@@ -178,7 +178,54 @@ Primitive types
 
 
 * 2, lecture 2, 2020-09-09
-Recursion
+Recursion (induction)
+
+2:00
+Methode roept zichzelf aan
+    - Je krijgt een soort oneindige loop
+    - stop conditie
+        - bepaald hoe de oneindige loop eindigd
+
+13:00
+Nodig
+    - recursie is nodig voor het sommige oplossen 
+    - bijvoorbeeld het het doorlopen van een tree, of het vinden van grootste gemene deler.
+
+16:00
+Statement order
+    - belangrijk
+    - bepaald hoe de data gemanipuleerd word
+    - recursieve methode wordt eerst uitgevoerd voor dat de rest van de methode
+
+20:00
+Groots gemeende deler
+    - methode met input a en b
+    - check of b gelijk is aan 0
+    - als dat klopt dan is a de groots gemeende deler
+    - ander roep de methode aan met b en a modulo b
+
+33:00
+Methode aanroepen
+    - een methode bestaat uit code en data
+    - data
+        - bestaat uit parameters en locale variabelen
+        - wordt opgeslagen
+    - stack frame
+        - voor elke methode aanroep wordt er een nieuwe aangemaakt
+        - bevat een retouradres
+        - weg gegooid na dat de methode is uitgevoerd
+
+39:00
+Recursie gebrui
+    - om het concept van recursie te begrijpen hoef je niet te weten hoe het werk
+    - het is genoeg om te weten wat een recursieve methode doet
+    - recursie is te vergelijken met wiskundige inductie
+    - een recursieve methode volgt vaak de natuur van de data
+
+41:00
+    - bottom up: werk van beneden naar boven
+    - top-down: werk van boven naar beneden
+    - bisection: roep twee keer recursie van af het midden
 
 * 3, lecture 3, 2020-09-16
 List, ArrayList, LinkedList, Linear Search, Binary Search
