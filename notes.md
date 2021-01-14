@@ -15,7 +15,7 @@ What is object-oriented program
     - for medium to large problems
 
 23:30
-Abstraciton
+Abstraction
     - thinking about something as an idea
     - ignoring irrelevant details and ephasizeing essential ones
     - think about component withouth worrying about detail
