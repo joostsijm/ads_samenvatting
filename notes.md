@@ -294,9 +294,170 @@ Binary search
     - tot dat je bij het doel uitkomt
 
 
-
 * 4, lecture 4, 2020-09-23
 Big-O efficiency, simple sorts, comparator
+Liang 22.1 - 22.7
+
+3:30
+birthday paradox
+    - oplossing 1
+        - sla datums op in een array
+        - check alle datum tegen elkaar met een double for-loop
+        - efficiëntie
+            - tijd: O(n^2): stijging exponentieel
+            - geheugen: O(1), er wordt niets opgeslagen
+    - oplossing 2
+        - dates opslaan in array van 366 dagen met waardes 0
+        - voor iedere datum zet dayOfYear in array naar 1
+        - als een dayOfYear als 1 is heb je een match
+        - efficiëntie
+            - tijd: O(n) stijging blijft constant
+            - space: gebruikt meer geheugen, zeker in vergelijking met weinig dates
+
+12:00
+Efficientie
+    - als je iets efficient maken is het een afwezing kwa tijd, of geheugen
+    - hoge tijd efficientie betekend vaak lage space efficientie
+    - hoge space efficientie betekend vaak hoge tijd efficientie
+
+13:00
+Two sides
+    - wisselwerking tussen algoritme en data structuur
+    - afhankelijk algoritme kan je een bepaalde data structuur kiezen
+    - of afhankelijk van je data structuur heb kan het zijn dat je een bepaald algoritme moet kiezen
+    - method to solve -> algorithm
+    - storge of data -> data structure
+    - bijvoorbeeld: binare boom, linked list hebben eigen efficiente algoritmes
+
+14:00
+Algoritme
+    - informele definitie: stap voor stap methode om een probleem op te lossen; recept
+    - geeft een andtwoord op je probleem
+    - bijvoorbeeld
+        - hoe bak ik een cake
+        - bereken de volume van een vorm
+        - vinden van data in een grote database
+        - sorteren van een set data
+
+16:00
+Datastructuur
+    - manier waar op je de data op de computer hebt opgeslagen
+    - implementatie van data opslag
+    - bijvoorbeeld: Array, List, Stack, Queue, HashMap, Tree, Graph
+
+20:00
+Efficientie van een array
+    - toevoegen
+        - aan het einde van array een element toevoegen
+        - is ogenblikkelijk, onafhankelijk van lengte
+    - vinden
+        - elk element vergelijken tot dat je een match heb
+        - gemiddel vergelijk je de helft van de elementen in de array
+        - twee keer zo lange lijst betekend twee keer zo veel vergelijken
+    - verwijderen
+        - elk element na het te verwijderen element een terug verplaatsten
+        - ongeveer gelijk aan het vinden van een element
+    - 
+        - exponentieel afhankelijk van lengte
+
+28:00
+Algoritmische complexitie
+    - tijd complexiteit: relatie tussen aantal elementen en benodigde tijd
+    - ruimte complexiteit: relatie tussen aantal elementen en geheugen
+    - tijd-ruimte trade off, afweging tussen de twee
+    - volgorde van complexiteit
+
+30:00
+    - contstant time, onafhankelijk hoe veel items, het duur altijd even lang
+
+42:00
+    - dubbele for loop is kwadratish
+
+44:00
+Time complexity JVM
+    - java optimaliseert de code in de Java Virtual Machine
+    - controleerd uitkomsten van functies, en maakt aanpassingen als hij repetities ziet
+    - Just In Time programming
+    - Uitzetten met -Xint
+
+47:00
+Order of time complexity: big O
+    - order van grote
+    - linear search, van orde n, dus  O(n)
+    - binary search, van orde log n, dus  O(log n)
+    - log is het tegenovergesteld van exponentieel, stijgt steeds minder snel
+    - kwadratisch
+        - stijging is exponentieel, twee keer zo veel betekend vier keer zo veel complexiteit
+    - nauwkeurigheid
+        - complexiteit = O(1 + n + n^2) -> O(N^2)
+
+57:00
+Sorting
+
+58:00
+Selection sort
+    - selecteer het kleinste element, vergelijk met alle elementen in collectie
+    - verwissel met het eerste ongesorteerd element in de collectie
+    - herhaal tot dat alles gesorteerd is
+    - complexity O(n^2)
+
+63:00
+Insertion sort
+    - pak het meest linker element uit het ongesoorteerde deel
+    - vergelijk met laatste element in gesorteerde deel tot dat je een hoger element vind
+    - paats het op de juiste plek in het gesorteerde deel
+    - herhaal tot ongesorteerde deel leeg is
+    - complexity O(n^2)
+
+71:00
+Bubble sort
+    - complexity O(n^2)
+    - staan elementen goed, gebeurt niets, anders verplaatsen
+    - vergelijk eerst eerst en tweede, dan tweede en derde
+    - stappen
+        - verplaatst grootste element naar rechts
+        - herhaal tot dat alles op de juiste plek staat
+
+72:00
+Comparing basic sorts
+    - best case en worst case
+    - afhankelijk van initiale volgorde van elementen
+        - almost sorted, reverse, random
+    - constante tijd is ideal, maar bijna nooit haalbaar
+
+78:00
+Overzicht big O
+    O(1) & constant
+    O(log n) & logaritmic
+    O(sqrt(n)) = O(n^0.5) & sqrt n
+    O(n) & linear
+    O(n log n) & n log n
+    O(n sqrt(n)) = O(n^1.5) & n sqrt n
+    O(n^2) & quadratic
+    O(n^3) & n to to power of 3
+    O(a^n) & 57
+
+79:00
+Comparable en comparator
+    klasse die deze implementeerd vergelijkbaar is met andere instantie van de klasse
+    - comparable
+        // - klasse die dit implementeerd vergelijkbaar is met andere instantie van de klasse
+        - klasse maar op een manier vergelijken
+        - compareTo
+            - implementeer methode in de klasse
+            - heeft een ander object als parameter
+            - returned een integer
+            - als de huidige instantie voor de meegegeven instantie moet komen return iets kleiner dan 0
+            - als de huidige instantie gelijkwaardig is aan de meegegeven instantie return 0
+            - als de huidige instantie achter de meegegeven instantie moet komen return iets groter dan 0
+    - comparator
+        - extra sorteer klasse
+        - Voor vergelijken van twee instanties van klasse
+        - heeft een compare methode, met twee parameters
+        - kan ook binnen de klasse die je wil sorteren
+    - standaard java class
+        - geimplementeerd
+        - natuurlijke ordering
 
 * 5, lecture 5, 2020-09-30
 MergeSort, QuickSort selection sort, insertion sort, shellsort, mergesort, quickset, heapsort
