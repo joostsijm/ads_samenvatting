@@ -462,6 +462,48 @@ Comparable en comparator
 * 5, lecture 5, 2020-09-30
 MergeSort, QuickSort selection sort, insertion sort, shellsort, mergesort, quickset, heapsort
 
+14:00
+Quicksort
+    - eigenschappen
+        - meest gebruikte sorteer algoritme
+        - niet (zo) moeilijk te implementeren
+        - werkt goed onafhankelijk van input data
+        - in place, heeft geen extra ruimete nodig
+        - Efficientie is O(N log N)
+        - devide and conquer
+        - paritie de array in twee kleinere arrays
+        - recursief
+    - partitioning
+        - selecteer een pivot, meestal het eerst element
+        - zoek van af de voorkant tot je een waarde vindt boven de pivot
+        - zoek van af de achterkan tot je een waarde vindt die boven de pivot is
+        - vervang deze twee posities en herhaal
+        - wanneer ze elkaar in het midden vinden verplaats de pivot hier naar toe
+        - return de positie van de pivot
+    - stap
+        - shuffle de collectie
+        - kies een pivot, element waar mee je gaat vereglijken, uit de collectie
+        - splits de collectie op in waardes groter en kleiner dan pivot.
+
+63:00
+Merge sort
+    - recursief
+    - Opsplitsen van collectie
+    - stappen
+        - begin met twee gesorteerde collecties
+        - vergelijk de eerste waardes van de twee collecties
+        - zet de waarde die eerst komt in de gesorteerde array
+        - herhaal met de volgende positie van de array waar je de waarde uit hebt gehaald.
+    - buttom up
+    - meer over opzoeken
+
+sort worst average best
+selection n^2/2 n^2/2 n^2/2
+insertion n^2/2 n^2/4 n
+merge nlogn nlog nlognn
+quick n^2/2 2nlogn nlogn
+3-way quick n^r/2 nlogn nlogn
+
 * 6, lecture 6, 2020-10-07
 Stack, Queue, Priority Queue, Heap
 
