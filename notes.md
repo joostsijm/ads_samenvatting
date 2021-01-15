@@ -340,7 +340,7 @@ Algoritme
         - sorteren van een set data
 
 16:00
-Datastructuur
+Data structuur
     - manier waar op je de data op de computer hebt opgeslagen
     - implementatie van data opslag
     - bijvoorbeeld: Array, List, Stack, Queue, HashMap, Tree, Graph

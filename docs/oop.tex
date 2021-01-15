@@ -133,7 +133,7 @@ Verschillende manier om op een oplossing te komen.
 
 \subsection{Comparator}
 Wanneer een klasse dit implementeerd kan het vergeleken worden met een andere instantie van deze klasse.
-Door middel van de \textit{compareTo()} methode die in de klas is geimplementeerd. 
+Door middel van de \textit{compareTo()} methode die in de klas is geimplementeerd.
 De methode heeft een ander object als parameter waar het dan mee vergelijkt wordt en returned een integer.
 Als de huidige instantie voor de megegeven instantie moet komen geeft het iets kleiner dan 0, anders hoger dan 0, als het gelijk is geeft het 0 terug.
 De meeste standaard klassen implementeren de comparator, dit gebeurt op natuurlijke ordering: A-Z, a-z, 0-9, etc.
@@ -187,22 +187,22 @@ Dit heet JIT (Just In Time) en kan uitgeschakeld worden met de \textit{-Xint} pa
 Beschrijft de notatie van de orde van grote.
 $O(n^2)$ betekend een exponentiele stijging naar mate de input groter wordt.
 $O(\log N)$ betekend logaritme, het omgekeerd van een exponent, het zal minder snel stijgen naar mate de input groeit.
-Een dubbele loop betekend al vaak exponentieel. 
+Een dubbele loop betekend al vaak exponentieel.
 Voor programming gebruiken we weinig nauwkeurigheid, $O(1+N+N^2)$ wordt afgekort naar $O(N^2)$.
 
 \begin{center}
     \begin{tabular}{ll}
-        Big-O                       & Omschrijving \\
+        Big-O                           & Omschrijving \\
         \midrule
-        $O(1)$                      & Constant \\
-        $O(\log N)$                 & Logaritmisch \\
-        $O(\sqrt{N}) = O(N^{0.5})$    & wortel n \\
-        $O(N)$                      & Lineair \\
-        $O(N \log N)$               & n log n \\
-        $O(N \sqrt{N}) = O(N^{1.5})$  & n wortel n \\
-        $O(N^2)$                    & Kwadratisch \\
-        $O(N^3)$                    & n tot de macht 3 \\
-        $O(a^N)$                    & 57 \\
+        $O(1)$                          & Constant \\
+        $O(\log N)$                     & Logaritmisch \\
+        $O(\sqrt{N}) = O(N^{0.5})$      & wortel n \\
+        $O(N)$                          & Lineair \\
+        $O(N \log N)$                   & n log n \\
+        $O(N \sqrt{N}) = O(N^{1.5})$    & n wortel n \\
+        $O(N^2)$                        & Kwadratisch \\
+        $O(N^3)$                        & n tot de macht 3 \\
+        $O(a^N)$                        & 57 \\
         \bottomrule
     \end{tabular}
 \end{center}
