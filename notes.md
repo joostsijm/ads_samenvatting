@@ -124,7 +124,7 @@ Grouping object
     - kenmerken van een collecties
         - aantal items om op te slaan is niet vastgesteld
         - mogelijkheid om items to te voegen / verwijderen
-    - mogelijke eigenschappen 
+    - mogelijke eigenschappen
         - toevoegen, verwijderen, vinden, opvragen, tellen
 
 54:00
@@ -156,13 +156,13 @@ Geparametriseerde abstracte datatypes
 69:00
 Iterable
     - interface geimplementeerd door een collectie dat Iterator returned
-    - Iterator  
+    - Iterator
         - interface met hasNext() en next() methode
         - private class binnen de collectie
     - alternatief: gebruik .size() en loop door de indices
     - for each loop is shorthand voor een while loop met iterator
     - rekening houden met:
-        - time complexity: relatie tussen aantal elementen en tijd 
+        - time complexity: relatie tussen aantal elementen en tijd
         - memory complexity: relatie tussen aantal elementen en ruimte
         - order of complexity
 
@@ -188,7 +188,7 @@ Methode roept zichzelf aan
 
 13:00
 Nodig
-    - recursie is nodig voor het sommige oplossen 
+    - recursie is nodig voor het sommige oplossen
     - bijvoorbeeld het het doorlopen van een tree, of het vinden van grootste gemene deler.
 
 16:00
@@ -251,7 +251,7 @@ ArrayList
 
 65:00
 LinkedList
-    - gebruikt geen array 
+    - gebruikt geen array
     - elementen worden in nodes opgeslagen die onderling gelinked zijn
     - node is een prive klasse binnen de lijst klasse en heef een next propertie naar de volgende node
     - list houdt de eerst en laatste node bij
@@ -290,7 +290,7 @@ Linear search
 Binary search
     - de collectie waar in je zoekt moet gesorteerd zijn
     - split de collectie in tweeën
-    - als de waarde lager / hoger dan het midden is, split dan de lage / hoge helft 
+    - als de waarde lager / hoger dan het midden is, split dan de lage / hoge helft
     - tot dat je bij het doel uitkomt
 
 
@@ -357,8 +357,6 @@ Efficientie van een array
     - verwijderen
         - elk element na het te verwijderen element een terug verplaatsten
         - ongeveer gelijk aan het vinden van een element
-    - 
-        - exponentieel afhankelijk van lengte
 
 28:00
 Algoritmische complexitie
@@ -515,8 +513,7 @@ Stack
     - weg terug vinden, als je een dood punt vindt terug lopen naar laatste kruispunt
     - undo, redo, als je undo uitvoert komt de acties op de redo stack
     - recursie gebruikt stack, zo dat het weet waar het terug moet komen
-    - first in, last out
-    - last in, first out
+    - first in, last out FIFO, last in, first out LIFO
     - operations
         - push: toevoegen aan het eind
         - pop: afhalen aan het eind
@@ -597,8 +594,6 @@ Hheap
         - toevoegen O(log n)
         - verwijderen O(log n)
         - zoeken / verwijderen O(n)
-
-priority queue interface
 
 
 * 7, lecture 7, 2020-10-21
