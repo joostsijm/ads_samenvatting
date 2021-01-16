@@ -599,6 +599,149 @@ Hheap
 * 7, lecture 7, 2020-10-21
 Hashing, Sets, Maps
 
+4:00
+Collection interface
+    - Set interface implementeerd de collection interface
+
+7:00
+Set
+    - in een set is elk element uniek
+    - heeft geen volgorde
+    - bijvoorbeeld: studenten in een team
+    - operaties
+        - add: toevoegen als het nog niet bestaat
+        - remove: verwijder als bestaat
+
+15:00
+TreeSet
+    - gebruikt boom strucuur om elementen op te slaan
+    - moet Comparable implementeren om te vergelijken of element al bestaat
+        - alternatief kan je een comparator toevoegen aan de contructor
+
+23:00
+HasSet
+    - afhankelijk van `hashCode` en `equals`, geen comparator
+
+27:00
+Hash
+    - als methode equals waar is moet hashcode hashCode hetzelfde geven
+    - als methode equals niet waar is kan de hashCode anders zijn
+    - wanneer equals niet is geimplementeerd wordt de functie van de super klasse gebruikt
+    - als er geen super klasse is wordt door de object klasse de locatie in het geheugen (referentie) gebruikt
+
+- hashCode
+    - methode die een integer returned
+    - een integer in de Interger.hashCode opgeven is onnodig
+
+43:00
+Equals
+    - controller of object is huidige instantie is, return true
+    - controller of object niet null is en of het object geen instantie is van het huidige object, return false
+    - cast object naar de klasse van huidige instantie
+    - controller of identificerende velden gelijk zijn
+
+52:00
+Set operations
+    - union: addAll
+    - subset: containsAll
+    - intersection: retainAll
+    - minus: removeAll
+
+55:00
+Static factory methods
+    - Set.of(...), maak een set van variables
+    - List.copyOf(...)
+
+    - List.of(...), maak een list van variables
+    - set.copyOf(...)
+
+57:00
+Hashing 1
+    - scramble / map een waarde vna een object naar een code
+    - consitent: dezelfde waardes moet altijd op hetzelfde code uitkomen
+    - onomkeerbaar: kunt niet de orginele waarde van de code krijgen
+
+59:00
+Hashing 2
+    - operatie dat een waarde verstrooid / mapped naar een willekeurige integer, consitent en mogelijk onomkeerbaar
+    - verstrooid: verbeel de waardes gelijk over beschikbare integers
+    - mogelijk onomkeerbaar: duplicaten kunnen bestaan maar het lieft zo weinig mogelijk
+    - hash gebaseerde data structuren: HashSet, HashMap
+
+61:00
+stappen voor HasSet of HashMap
+    - steutel gaat door hash function
+    - de hash code gaat door modulo array size
+    - de array index wordt gecontrolleerd op collissions
+    - uiteindelijke index
+
+63:00
+Voorbeeld
+    - nummerbord van 31 auto's
+    - combinatie twee cijfers en een letter
+    - geef letters een waarde van 1 tot 26
+    - hashCode berekennen: letterwaarde * 100 + nummerwaarde
+    - hashCode % 31 = index
+
+65:00
+Collisions
+    - overeenkomende hashCode van twee verschillende waardes
+    - kan niet voorkomen worden
+    - oplossingen:
+        - open addressing
+            - linear probing
+                - als een plek bezet is ga naar de volgende plek
+                - herhaal tot dat er een plek vrij is
+                - nadeel: clustering
+            - quadratic probing
+                - als er een plek bezit is tellen we daar n kwadraad bij op, beginnend bij en
+                - verhoog iedeer keer n tot dat er een plek vrij is
+                - nadeel: geen primare clustering maar wel secondaire clustering
+            - double hashing
+                - linear en quadratic probing geven dezelfde stap volgorde voor alle keys
+                - genereer een stap grode afhankelijk van de key
+                - andere hash methode dan de primaire hash methode
+                - zorg er voor dat je geen stap grote krijgt van 0
+                - stepSize = 1 + kash2(key) % CONSTANT
+                - constante niet groter dan de grote van de array
+        - separate chaining
+            - als hashCode op dezelfde index uitkomt stop ze samen in een LinkedList
+            - nadeel: lijst kan lang worden
+            - geen cluster problemen
+            - datastructuur is complexer
+76:00
+Een goede Hash functie kiezen
+    - afhankelijk van de omvang en verdeling van de waarde
+    - perfecte hash functie: elke key gaat naar een apparte locatie, geen collisions
+    - vereisten
+        - consistent
+        - efficient te berekennen
+        - uniform verdeeld 0 tot MAX_INT
+    - voorbeeld
+        - goed: laatste drie cijfers
+        - slecht: eerste drie cijfers
+
+78:00
+grote onderlinggende array
+    - gadviseerd een priemgetal als grote te kiezen
+    - java resize
+        - automatisch als inhoud meer dan 75% is
+        - vergroot in macht van 2
+        - inhoud opnieuw gehashed
+
+79:00
+Java object.hashCode()
+    - returned een integer tussen MIN_VALUE en MAX_VALUE
+    - String classe berekend hashCode op basis van berekening met karakter code
+    - Integer returned zijn de waarde in HashCode
+
+83:00
+Hashing in Java
+    - ieder klass inheirit Object.hashCode()
+    - requirement: if x.equals(y), then (x.hashCode() == y.hashCode())
+    - desirable: if !x.equals(y), then (x.hashCode() != y.hashCode())
+    - standaard memory adress van x
+
 * 1, lecture 8, 2020-11-11
 Functional interfaces, Lambda expressions
 
