@@ -37,3 +37,38 @@ Er bestaan verschillende types.
 \subsubsection{Vergelijking}
 \textbf{ArrayList} heeft fixed lengte, snelle directe toegang, moeilijker toevoegen en verwijderen, altijd te veel of te weinig geheugen.
 \textbf{LinkedList} heeft een variable lengte, makkelijk groeien en verkleinen, geen directe toegang, makkelijk toevoegen / verwijderen, objecten niet uitgelijnd in geheugen.
+
+\subsection{Stack}
+Wat er als eerste in gaat komt er als laatste pas uit, en andersom (FILO, LIFO).
+Bijvoorbeeld gebruik: undo en redo, terugkeren laatste kruispunt, recursie bijhouden van frames.
+Implementatie kan onder andere met array, arrayList / linkedList.
+Operaties:
+\textbf{push}: Toevoegen aan het eind.
+\textbf{pop}: Afhalen van het eind.
+\textbf{peek}: Volgende waarde bekijken.
+
+\subsection{Queue}
+Wat er als eerste in gaat komt er als eerste uit (FIFO).
+Voorbeelden: print queue, aanvraag verwerken op server.
+Met een implementatie met een array heb je twee int variable voor begin en eind van de queue.
+Bij enqueue verhoogt de eind variable, bij dequeue verhoogt start variable.
+Als eind variable is bereikt zet begin variable op 0 als daar plek is, anders verdubbel je de array in lengte.
+\textbf{Deque} is een double ended queue, begin is zowel start als einde.
+Heeft daar extra operations voor.
+Operations:
+\textbf{enqueue}: Toevoegen aan begin.
+\textbf{dequeue}: Verwijderen aan het eind.
+\textbf{peek}: Volgende waarde bekijken.
+
+
+\subsubsection{Heap}
+Ook wel het zelfde als een priority queue.
+Heeft als structuur een binary tree dat is geimplementeerd met een array.
+Eerst item begint op 1, van linker child $index \times 2$, voor rechter child $index \times 2 + 1$, voor parent $\frac{index}{2}$.
+Elk pad van af root geeft een ordered list, maar er is geen traveral mogelijk want het is weakly ordered.
+Efficientie: toevoegen / verwijderen: $O(\log N)$, zoeken $O(N)$.
+\textbf{Verwijderen}: return gewenste index, zet laatste node op deze plek en voer sink op deze index uit.
+\textbf{Sink}: vergelijk hoogste child, controlleer of hoogste child hoger is dan de parent, anders ben je klaar.
+Verplaats huidige positie met hoogste child en herhaal tot er geen childs meer zijn.
+\textbf{Toevoegen}: Voeg element toe aan het einde van array, gebruikt swim methode om goede positie te vinden.
+\textbf{Swim}: Als parent hoger is verwissel positie, herhaal tot parent lager is.
