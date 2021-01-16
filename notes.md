@@ -619,7 +619,7 @@ TreeSet
         - alternatief kan je een comparator toevoegen aan de contructor
 
 23:00
-HasSet
+HasHSet
     - afhankelijk van `hashCode` en `equals`, geen comparator
 
 27:00
@@ -741,6 +741,47 @@ Hashing in Java
     - requirement: if x.equals(y), then (x.hashCode() == y.hashCode())
     - desirable: if !x.equals(y), then (x.hashCode() != y.hashCode())
     - standaard memory adress van x
+
+85:00
+Performance
+    - betere spreiding in hashCode levert betere performance
+
+86:00
+Map
+    - sleutel-waarde paar abstractie
+    - waarde invullen met gespeceficeerde sleutel
+    - waarde opvragen met geven sleutel
+    - voorbeeld: DNS, geef een domein naam en krijg ip adres
+
+88:00
+Java Map
+    - interface met generics K (key) en V (value)
+    - types
+        - HashMap, op basis van HashCode en equals
+        - TreeMap, op basis van comparable of comparator
+
+89:00
+hashMap
+    - items opgeslagen in array
+    - gebruikt sleutel van items
+    - zoeken met key in array index
+    - voordeel: snel toevoegen en zoeken
+        - constante tijd: O(1) als er geen collisions zijn
+    - nadeel: moeilijk te vergroten, geen manier om items op volgorde te bekijken
+    - methods
+        - get, krijg waarde terug of null
+        - getOrDefault, geeft waarde of als die niet bestaat een default waarde
+        - put, voeg een waarde toe met een key
+        - putIfAbsent, voeg een waarde toe als die nog niet bestaad
+        - remove, verwijder de sluitel uit de map
+        - containsKey, controlleer of sleutel er in zit
+        - containsValue, controller of waarde er in zit
+
+98:00
+Map Collection acces methods
+    - keySet, geeft een set van keys
+    - values, geeft een collectie van waardes
+
 
 * 1, lecture 8, 2020-11-11
 Functional interfaces, Lambda expressions

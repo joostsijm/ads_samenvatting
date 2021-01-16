@@ -3,7 +3,7 @@ Datatypes zoals ArrayList, LinkedList, Stack, Queue, Priority Queue, Heap, Sets,
 % List, ArrayList, LinkedList, Stack, Queue, Priority Queue, Heap, Sets, Maps
 
 \subsection{List}
-Een list is een abstract data type, omdat het op meerdere manier geimplementeerd kan worden
+Een list is een abstract data type, omdat het op meerdere manier geïmplementeerd kan worden
 In Java is hier voor een ArrayList en een Linkedlist.
 
 \subsubsection{ArrayList}
@@ -63,7 +63,7 @@ Operations:
 
 \subsubsection{Heap}
 Ook wel het zelfde als een priority queue.
-Heeft als structuur een binary tree dat is geimplementeerd met een array.
+Heeft als structuur een binary tree dat is geïmplementeerd met een array.
 Eerst item begint op 1, van linker child $index \times 2$, voor rechter child $index \times 2 + 1$, voor parent $\frac{index}{2}$.
 Elk pad van af root geeft een ordered list, maar er is geen traveral mogelijk want het is weakly ordered.
 Efficientie: toevoegen / verwijderen: $O(\log N)$, zoeken $O(N)$.
@@ -72,3 +72,45 @@ Efficientie: toevoegen / verwijderen: $O(\log N)$, zoeken $O(N)$.
 Verplaats huidige positie met hoogste child en herhaal tot er geen childs meer zijn.
 \textbf{Toevoegen}: Voeg element toe aan het einde van array, gebruikt swim methode om goede positie te vinden.
 \textbf{Swim}: Als parent hoger is verwissel positie, herhaal tot parent lager is.
+
+\subsection{Set}
+Een ongeorderde collectie waar ieder element uniek is.
+Bijvoorbeeld studenten in een klas.
+Operations:
+\textbf{addAll}: union,
+\textbf{containsAll}: subset,
+\textbf{retainAll}: intersection,
+\textbf{removeAll}: minus,
+
+\subsubsection{TreeSet}
+Gebruikt \index{boomstructuur}, zoals bij een heap, om elementen op te slaan.
+Vergelijkt met bestaande element om te kijken of ze al zijn toegevoegd.
+Elementen hebben \index{Comparable} geïmplementeerd, of er moet een \index{Comparator} meegegeven worden.
+
+\subsubsection{TreeMap}
+
+\subsection{Hash}
+Voor Java collections is de hash een operatie dat een waarde verstrooid / mapped naar een willekeurige integer.
+Dat moet consitent, waardes geven altijd dezelfde hash, en mogelijk onomkeerbaar, duplicaten kunnen bestaan maar het lieft zo weinig mogelijk.
+Data structuren gebaseerd op hash zijn: HashSet en HashMap, voor de elementen moet \textit{hashCode} en \textit{equals} correct geïmplementeerd zijn.
+
+\subsubsection{HashCode}
+Methode dat een interger returned.
+
+\subsubsection{Open addressing}
+De waarde gaat door de hash functie.
+De uitkomst wordt modulo de lengte van de interne array gedaan om de voorgestelde index te krijgen.
+Er wordt gecontroleerd of de voorgestelde index collisions opleverd.
+De een method om collisions op te lossen geeft een nieuwe voorgestelde index.
+Herhaal tot er een open index gevonden is, dat is de uiteindelijke index.
+
+\subsubsection{Equals}
+Vergelijk twee elementen.
+Stappen:
+Controller of het object de huidige instantie is.
+Controlleer of object niet \textit{null} is en of de klasses niet hetzelfde zijn.
+Cast het object anders naar de klasse van de huidige instantie.
+Controlleer of identificerende velden gelijk zijn.
+
+\subsubsection{HashSet}
+Set op basis van hash van de elementen. 
