@@ -14,7 +14,40 @@ $O(N^2)$ exponentiele groei.
 Pak het eerste element van het ongesorteerde deel en zet het op de juiste plek in het gesorteerde deel.
 Herhaal tot dat het ongesorteerde deel leeg is.
 
-\subsection{Bubble sort}
+\subsection{Bubble Sort}
 $O(N^2)$ exponentile groei.
 Vergelijk het eerste element met het volgende element, als die hoger is verplaats van plek.
 Herhaal dat steeds met een plek verder in de collectie tot dat alles op de goede plek staat.
+
+\subsection{Divide and Conquer}
+Techniek gebruikt in algoritmes, bestaat uit drie stappen: 
+\textbf{Divide}: Opbreken van het probleem in subproblemen.
+\textbf{Conquer}: Subprobleem recursief aanroepen tot het probleem is opgelost.
+\textbf{Combine}: Samenvoegen van uitkomst van de suboplossingen om de oplossing te krijgen.
+
+\subsection{Merge Sort}
+$O(N\log N)$.
+Is een recursieve sorteer algoritme die een divide and conquer methode gebruikt.
+De collectie wordt steeds opgesplitst en uit uiteindelijk weer samengevoegd.
+\textbf{Split}: Het plitsen van de input.
+Splits de collectie door de helft in twee nieuwe collecties.
+Herhaal tot dat de collectie uit een item bestaat.
+\textbf{Merge}: Twee gesorteerde collecties mergen.
+Maak een nieuwe collectie met de lengte van de twee collecties samen.
+Vergelijk de eerste waardes van de twee collecties en zet de waarde die eerst komt in de nieuwe collectie.
+Herhaal met de volgende positie van de collectie waar je de waarde uit hebt gehaald, tot het einde van beide collecties.
+
+\subsection{Quicksort}
+$O(N\log N)$.
+Is een veel gebruikt algoritme dat goed werkt onafhankelijk van de input data.
+Een recursief divide and conquer algoritme dat de input in place sorteerd.
+Het selecteerd een pivot en partitioneerd de collectie op hoger en lager van de pivot.
+\textbf{Stappen}: Shuffel eerst de collectie.
+Voer de partitioning functie uit en herhaal dat met het deel voor en na de pivot.
+\textbf{Partitioning}:
+Selecteer een pivot, zoals het eerste element.
+Zoek van voor tot je een waarde hoger dan de pivot vindt.
+Zoek van af achter tot je een waarde lager dan de pivot vindt.
+Verwissel deze twee posities en herhaal.
+Wanneer je in het midden uitkomt verwissel positie met de pivot.
+return de positie van de pivot.
