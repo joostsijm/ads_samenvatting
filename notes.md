@@ -507,6 +507,100 @@ quick n^2/2 2nlogn nlogn
 * 6, lecture 6, 2020-10-07
 Stack, Queue, Priority Queue, Heap
 
+double ended queue
+
+3:00
+Stack
+    - wat er als eerste in gaat komt er als eerst uit
+    - weg terug vinden, als je een dood punt vindt terug lopen naar laatste kruispunt
+    - undo, redo, als je undo uitvoert komt de acties op de redo stack
+    - recursie gebruikt stack, zo dat het weet waar het terug moet komen
+    - first in, last out
+    - last in, first out
+    - operations
+        - push: toevoegen aan het eind
+        - pop: afhalen aan het eind
+        - isEmpty: controlleer leeg
+        - peek: kijken naar laastste waarde
+        - size: grote
+    - voorbeeld functie: een woord omdraaien, alle letters pushen op een stack en poppen>
+    - implementatie: array, ArrayList / LinkedList
+
+23:00
+Queue
+    - achterkan er bij, voorkant er af
+    - printer queue, ticket / message verwerken op een server
+    - first in, first out (FIFO)
+    - operations
+        - enqueue, toevoegen aan het begin
+        - dequeue, verwijderen aan het eind
+        - isEmpty, controleer leeg
+        - size, grote
+    - implementatie met array
+        - int variable voor begin en eind
+        - bij enqueue verhoogd eind variable
+        - bij dequeue verhoog start variable
+        - als eind variable einde array bereikt begin opnieuw in array als begin variable hoger is
+        - als array vol is verdubbel de lengte
+    - implementatie met LinkendList
+    - in principe is efficiency constant, tot dat array verlengt wordt
+
+53:00
+Deque
+    - Double ended queue
+    - kan aan het begin en einde toevoegen en verwijderen
+
+70:00
+Priority queue
+    - werkt ongeveer als een que, first out
+    - items gesorteerd op waarde
+    - hoge priority items gaan naar het einde van de queue
+    - toevoegen
+        - methode moet aangepast worden
+        - vergelijken met bestaande waardes
+        - O(n)
+73:00
+Hheap
+    - berg
+    - structuur binary tree: graaf met twee children per node
+    - complete / dense: eerst bovenliggende lagen vol zijn
+    - node waarde moet hoger zijn als de waardes van kinderen
+    - implementatie array
+        - eerst item begin op 1
+        - per level gebruik je het dubbele aantal indices
+        - left child = index * 2
+        - right child = index * 2 + 1
+        - parent = index / 2
+    - gevolgen
+        - elk pad van root geeft ordered list
+        - geen traversal mogelijk, weakly ordered
+        - verwijderen van grootste makkelijk
+            - snelle verwijderen van maximum
+        - snel nodes toevoegen
+    - verwijderen van maximum
+        - return index 1
+        - zet laatste node op index 1
+        - voer sink methode op index 1 uit
+    - sink laten zakken naar de juiste positie
+        - vergelijk hoogste child
+        - check of hoogste child hoger is dan parent, ander ben je klaar
+        - verplaats met hoogste child node
+        - herhaal tot er geen childs meer zijn
+    107:00
+    - insertion
+        - voeg element toe aan einde van de array
+        - swim toegevoegde node
+    - swim (tricle) verplaatsen naar de correcte positie door te vergelijken met parent
+        - als parent lager is swap posities
+        - herhaal tot parent hoger is
+    - efficiency
+        - toevoegen O(log n)
+        - verwijderen O(log n)
+        - zoeken / verwijderen O(n)
+
+priority queue interface
+
+
 * 7, lecture 7, 2020-10-21
 Hashing, Sets, Maps
 
