@@ -1,0 +1,58 @@
+\section{Hashing}
+Operatie waar in een waarde scrambled / mapped word naar een code.
+Dit is consitent, waardes komen altijd op dezelfde code, en onomkeerbaar, kan niet de orginele waarde uit code krijgen.
+Voorbeeld: versleutelen van een wachtwoord.
+
+\subsection{Java hashing}
+Voor Java collections is de hash een operatie dat een waarde verstrooid / mapped naar een willekeurige integer.
+In vergelijking met standaard hashing deze hash mogelijk onomkeerbaar, door dat er mogelijk duplicaten ontstaan, maar het lieft zo weinig mogelijk.
+Data structuren gebaseerd op hash zijn: HashSet en HashMap, voor de elementen moet \textit{hashCode} en \textit{equals} correct geïmplementeerd zijn.
+
+als methode \textit{equals} waar is moet de methode \textit{hashCode} ook hetzelfde zijn.
+Als \textit{equals} methode niet waar it kan de \textit{hashCode} anders zijn, maar is niet verplicht.
+Wanneer \textit{equals} en \textit{hashCode} niet zijn geimplementeerd worden de methodes van de supper klasse gebruikt.
+Als die er niet is wordt de methodes uit \textit{Object} gebruikt, die vergelijkt de positie in het geheugen (referentie).
+
+\subsubsection{Equals}
+Vergelijk of twee elementen gelijk zijn aan elkaar.
+Stappen:
+Controller of het object de huidige instantie is.
+Controlleer of object niet \textit{null} is en of de klasses niet hetzelfde zijn.
+Cast het object anders naar de klasse van de huidige instantie.
+Controlleer of identificerende velden gelijk zijn.
+
+\subsubsection{HashCode}
+Methode dat, afhankelijk van de input, consistent een interger terug geeft, dit kan van \textit{Integer.MIN\_VALUE} tot \textit{Integer.MAX\_VALUE}.
+De perfect hash methode zou alle waardes uniform verdelen, dat levert een betere performance vanwege weinig collisions.
+Java datatypes hebben vaak al een eigen implementatie, zoals String dat een waarde berekend op basis van characters, en Integer dat zijn eigen waarde returned.
+
+Simpel voorbeeld:
+Nummerborden van auto's bijhouden dat bestaat uit een combinatie van twee cijfers en een letter.
+Geef letters een waarde van 1 tot 26, berekennen hashCode met: \textit{letterwaarde * 100 + cijfers}.
+
+\subsection{Index berekenen}
+Voor het gebruik in een collectie wordt er een index berekend op basis van de hashCode.
+Stappen:
+De hash gaat in hashCode methode.
+De uitkomst wordt modulo de lengte van de interne array gedaan om de voorgestelde index te krijgen.
+Er wordt gecontroleerd of de voorgestelde index collisions opleverd.
+De een method om collisions op te lossen geeft een nieuwe voorgestelde index.
+Herhaal tot er een open index gevonden is, dat is de uiteindelijke index.
+
+\subsection{Collisions}
+Het is niet te voorkomen dat hashCode uitkomt op een voorgestelde index dat al in gebruik is. 
+Deze collissions kunnen op verschillende manieren opgelost worden.
+
+\subsubsection{Open addressing}
+In openadrassing zijn er drie belangrijke manier om collisions op te lossen.
+\textbf{Linear probing}: Door index steeds met \'e\'en te verhogen.
+Nadeel is dat er clusters ontstaan.
+\textbf{Quadratic probing}: Door $n^2$ verder te kijken, waarbij $n$ het aantal bezette plekken zijn.
+Nadeel is dat er geen primare clusters maar wel secundaire clusters ontstaan.
+\textbf{Double hashing}: De waarde opnieuw hashen om een stap grote te krijgen, om zo te voorkomen dat er collisions dezelfe stap grote krijgen.
+Dit doe je met een andere methode dan de primaire hash methode, ook moet je voorkomen een stapgrote van 0 te krijgen.
+Voorbeeld: \textit{stepSize = 1 + hash(waarde) \% CONSTANT}, waarbij CONSTANT een int kleiner dan de lengte van de array is.
+
+\subsubsection{Separate chaining}
+Wanneer de voorgestelde index al bezet is worden de waardes in een LinkedList toegevoegd.
+Op die manier worden clusters voorkomen, het nadeel is dat de datastructuur complexer wordt.

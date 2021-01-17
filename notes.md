@@ -657,7 +657,7 @@ Static factory methods
 
 57:00
 Hashing 1
-    - scramble / map een waarde vna een object naar een code
+    - scramble / map een waarde van een object naar een code
     - consitent: dezelfde waardes moet altijd op hetzelfde code uitkomen
     - onomkeerbaar: kunt niet de orginele waarde van de code krijgen
 
@@ -669,7 +669,7 @@ Hashing 2
     - hash gebaseerde data structuren: HashSet, HashMap
 
 61:00
-stappen voor HasSet of HashMap
+stappen voor HashSet of HashMap
     - steutel gaat door hash function
     - de hash code gaat door modulo array size
     - de array index wordt gecontrolleerd op collissions
@@ -702,7 +702,7 @@ Collisions
                 - genereer een stap grode afhankelijk van de key
                 - andere hash methode dan de primaire hash methode
                 - zorg er voor dat je geen stap grote krijgt van 0
-                - stepSize = 1 + kash2(key) % CONSTANT
+                - stepSize = 1 + hash2(key) % CONSTANT
                 - constante niet groter dan de grote van de array
         - separate chaining
             - als hashCode op dezelfde index uitkomt stop ze samen in een LinkedList
@@ -784,7 +784,47 @@ Map Collection acces methods
 
 
 * 1, lecture 8, 2020-11-11
-Functional interfaces, Lambda expressions
+Functional interfaces, Lambda expressions, builder pattern
+
+01:30
+Comparator revisited
+    - collecties kunnen gesoteerd worden door gebruik te maken van een helper object dat de Comparator implementeerd
+    - compare
+        -  0 if a1 equels a2
+        - <0 if a1 precedes a2
+        - >0 if a1 succeeds 2
+    - interface contract uitbreiden voor functionele interface
+    - comparator is een klasse zonder inkapseling dat maar een functie heeft
+        - dat is een functionele interface
+
+06:00
+    - elke interface met een enkele abstracte methode is een functionele interface
+    - functionele interface
+        - de functie is om een intuitieve manier om functies door te geven, naast data objecten
+        - geeft alleen toegang tot een enkele functie
+            - klasse met enkele methode, zonder ingekapselde data
+            - is abstract tot je het realize (define)
+
+7:00
+Vier variaties
+    - (traditioneel) geef een object instantie die de interface implementeerd
+    - geef een referentie naar een statische methode
+    - geef een referentie naar instantie methode
+    - geef een lambda expressie
+
+    - java compiler transformeert elk van de nieuwe syntax contsructies naar een anoniem object instantie dat de functionele interface implementeerd.
+
+8:00
+Classic example
+    - sort method krijgt een geinitialiseerde klasse van Comparator meegegeven
+    - sort(new Author.CompareByInitials());
+    - public static class CompareByInitials implements Comparator<Author> { ... }
+
+9:00
+geef een statische methode
+    - sort(Author::compareByInitials2)
+    - :: = referentie naar statische methode
+    - public static int compareByInitials2(Author a1, Author a2)
 
 * 2, lecture 9, 2020-11-18
 Streams, Collectors, Method chaining

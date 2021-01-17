@@ -1,4 +1,4 @@
-\section{datatypes}
+\section{Datatypes}
 Datatypes zoals ArrayList, LinkedList, Stack, Queue, Priority Queue, Heap, Sets, en Maps worden in dit hoofdstuk besproken.
 % List, ArrayList, LinkedList, Stack, Queue, Priority Queue, Heap, Sets, Maps
 
@@ -87,30 +87,29 @@ Gebruikt \index{boomstructuur}, zoals bij een heap, om elementen op te slaan.
 Vergelijkt met bestaande element om te kijken of ze al zijn toegevoegd.
 Elementen hebben \index{Comparable} geïmplementeerd, of er moet een \index{Comparator} meegegeven worden.
 
-\subsubsection{TreeMap}
-
-\subsection{Hash}
-Voor Java collections is de hash een operatie dat een waarde verstrooid / mapped naar een willekeurige integer.
-Dat moet consitent, waardes geven altijd dezelfde hash, en mogelijk onomkeerbaar, duplicaten kunnen bestaan maar het lieft zo weinig mogelijk.
-Data structuren gebaseerd op hash zijn: HashSet en HashMap, voor de elementen moet \textit{hashCode} en \textit{equals} correct geïmplementeerd zijn.
-
-\subsubsection{HashCode}
-Methode dat een interger returned.
-
-\subsubsection{Open addressing}
-De waarde gaat door de hash functie.
-De uitkomst wordt modulo de lengte van de interne array gedaan om de voorgestelde index te krijgen.
-Er wordt gecontroleerd of de voorgestelde index collisions opleverd.
-De een method om collisions op te lossen geeft een nieuwe voorgestelde index.
-Herhaal tot er een open index gevonden is, dat is de uiteindelijke index.
-
-\subsubsection{Equals}
-Vergelijk twee elementen.
-Stappen:
-Controller of het object de huidige instantie is.
-Controlleer of object niet \textit{null} is en of de klasses niet hetzelfde zijn.
-Cast het object anders naar de klasse van de huidige instantie.
-Controlleer of identificerende velden gelijk zijn.
-
-\subsubsection{HashSet}
+\subsection{HashSet}
 Set op basis van hash van de elementen. 
+
+\subsection{Map}
+Is een collectie voor sleutel-waarde abstractie.
+Waardes worden opgeslagen met een sleutel en opgevraagd met een sleutel.
+Voorbeeld: DNS, geeft ip-adres op basis van een domeinnaam.
+
+\subsubsection{Map interface}
+In Java is Map een interface me twee generics, K voor key en V voor value.
+Toegang methodes:
+\textbf{get}: Geeft waarde op basis van key terug.
+\textbf{getOrDefault}: Geeft waarde op basis van key of default waarde als key niet bestaad.
+\textbf{put}: Voeg een waarde toe in de map op basis van key.
+\textbf{putIfAbsent}: Voeg een waarde toe als die nog nog niet bestaat.
+\textbf{remove}: Verwijder waarde op basis van een key.
+\textbf{containsKey}: Controlleer of key bestaad.
+\textbf{containsValue}: Controlleer of waarde bestaad.
+\textbf{keySet}: geeft een set van sleutels.
+\textbf{value}: geeft een collectie van waardes.
+
+\subsubsection{TreeMap}
+Map geimplementeerd als boom structuur op basis van Comparable of Comparator. 
+
+\subsection{HashMap}
+Map op basis van hash van de elementen. 

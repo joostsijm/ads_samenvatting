@@ -1,0 +1,63 @@
+\section{Efficiency}
+In het efficiënt maken van een algoritme is het vaak een afweging tussen tijd en ruimte (geheugen).
+Hogere tijd efficiëntie betekend vaak lage ruimte efficiëntie, en een hoge ruimte efficiëntie betekend vaak een lage tijd efficiëntie.
+\textbf{Algoritme} is de manier dat je een probleem oplost, in informele definitie is een algoritme een stap voor stap methode om een probleem op te lossen, als een recept. Het geeft een andwoord op je probleem. Bijvoorbeeld, bakken van een cake, berekennen van een vorm, vinden van data in een grote database, sorteren van een set data.
+\textbf{Data structuur} de manier dat je de data opslaat heet een data structure. Het is een manier waar op je de data op een computer hebt opgeslagen.
+Een implementatie van een data opslag.
+Bijvoorbeeld: Array, List, Stack, Queue, Hashmap, Tree, Graph.
+
+Afhankelijk van je algoritme kan je een bepaalde data structuur kiezen, of afhankelijk van de data structuur moet je een bepaald algoritme kiezen.
+Bijvoorbeeld een binaire boom of een linked list hebben eigen efficiente algoritmes.
+
+\subsection{Birthday paradox}
+Hoe kan je van een groep mensen matchende geboorte datums vinden.
+Vergelijking van twee oplossingen.
+\textbf{Oplossing 1}, sla alle datums op in een array, controller per datums met de ander datums in een dubbele for loop.
+De tijd efficiëntie is $O(n^2)$, exponentiele stijging naar mate van datums, ruimte efficiëntie is hoog omdat je niets bijhoud.
+\textbf{Oplossing 2}, een array maken voor alle 366 dagen van het jaar met waarde 0.
+Voor in je van iedere datum de dag in de array verhogen met 1.
+Controlleer de array waar de dagen meer dan 1 is.
+De tijd efficiëntie is O(n), de stijging is constant, ruimte efficiëntie is constant maar gebruikt in vergelijking veel als je weinig datums heb.
+
+\subsection{Efficiëntie array}
+\textbf{Toevoegen}, een element wordt aan het einde van de array toegevoegd, is gebeurt ogenblikkelijk, onafhanklijk van lengte.
+\textbf{Vinden}, vergelijken van elk element tot je ee match hebt.
+Gemiddeld vergelijk je de helft van de elementen in de array.
+Met een twee keer zo lange lijst heb je twee keer zo veel vergelijkingen.
+\textbf{Verwijderen}, elk element na het te verwijderen element moet een plek terug verplaatst worden.
+Efficiëntie ongeveer even gelijk als vinden.
+
+\subsection{Algoritmische complexiteit}
+Er kan onderscheid gemaakt worden tussen twee soorten complexiteit.
+\textbf{Tijd complexitet} is de relatie tussen aantal elementen en benodigde tijd.
+\textbf{Ruimte complexiteit} is de relatie tussen aantal element en benodigd geheugen.
+In een algoritme maak je een overweging tussen de twee.
+
+\subsection{JVM}
+In de Java Virtual Machine wordt code geoptimaliseerd.
+Dit gebeurt door uitkomsten te controlleren en maakt aanpassingen in de runtime als het een snellere route ziet.
+Dit heet JIT (Just In Time) en kan uitgeschakeld worden met de \textit{-Xint} parameter.
+
+\subsection{Big O}
+Beschrijft de notatie van de orde van grote.
+$O(n^2)$ betekend een exponentiele stijging naar mate de input groter wordt.
+$O(\log N)$ betekend logaritme, het omgekeerd van een exponent, het zal minder snel stijgen naar mate de input groeit.
+Een dubbele loop betekend al vaak exponentieel.
+Voor programming gebruiken we weinig nauwkeurigheid, $O(1+N+N^2)$ wordt afgekort naar $O(N^2)$.
+
+\begin{center}
+    \begin{tabular}{ll}
+        Big-O                           & Omschrijving \\
+        \midrule
+        $O(1)$                          & Constant \\
+        $O(\log N)$                     & Logaritmisch \\
+        $O(\sqrt{N}) = O(N^{0.5})$      & wortel n \\
+        $O(N)$                          & Lineair \\
+        $O(N \log N)$                   & n log n \\
+        $O(N \sqrt{N}) = O(N^{1.5})$    & n wortel n \\
+        $O(N^2)$                        & Kwadratisch \\
+        $O(N^3)$                        & n tot de macht 3 \\
+        $O(a^N)$                        & 57 \\
+        \bottomrule
+    \end{tabular}
+\end{center}
