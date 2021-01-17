@@ -1,0 +1,75 @@
+\section{Functional Interface}
+Is een interface met een enkele abstracte methode en is bedoeld om op een intuïtieve manier fucties door te geven.
+
+\subsection{Aanroepen}
+Het aanroepen van een functionele interface kan op vier verschillende manieren, waar in dezelfde code uitvoeren wordt.
+Door een object instantie mee te geven die de interface implementeerd, traditionele methode.
+Door een referentie naar een statische methode of een instantie methode.
+Of door middel van een lambda expressie.
+
+\subsubsection{Traditioneel}
+Sort methode krijgt een geinitiaiseerde klasse van Comparator meegegeven, \textit{.sort(new Author.CompareByInitials());}.
+De Comparator is gedefineerd in de Author klasse, \textit{public static class CompareByInitials implements Comparator<Author> \{ ... \}}.
+
+\subsubsection{Statische methode}
+Vergelijk twee objecten.
+Een referentie naar een statische methode mee geven, \textit{.sort(Author::compareByInitials)}.
+\textit{::} betekend een referentie naar een methode.
+De statische methode is gedefineerd in de Author klasse, \textit{public static int compareByInitials2(Author a1, Author a2) \{ ... \}}.
+
+\subsubsection{Instantie methode}
+Vergelijk objectmet huidige instantie.
+Geef een referentie naar een methode van de instantie, \textit{.sort(Author::compareByInitials)}.
+De methode geimplementeerd in de Author klasse, \textit{public int compareByInitials(Author o) \{ ... \}}
+
+\subsubsection{Lambda expressie}
+Vergelijk twee objecten met een lambda expressie, \textit{.sort\{(a1, a2) -> \{ ... \}\}}.
+
+\subsection{Lambda}
+Origneel een wiskundig formalisme in de theoretische informatica.
+Het 'bewijst' de uitkomst van berekeningen door manipulatie van functionele uitdrukkingen.
+
+\subsubsection{Java lambda}
+In Java wordt lambda gebruikt als compate notatie om een instantie van een functionele interface te maken.
+Ook genoemd als arrow notation of anonymous function.
+Het wordt geformateerd als \textit{(parameter) -> expressie afhankelijk van parameters}.
+
+\subsection{Predicate}
+Functionele interface mte parameter dat een boolean terug geeft, handig voor onder andere filter criteria.
+Methode die een predicate implementeerd: \textit{public Set <Book> findBooks(Predicate<Book> filter) \{ ... \}}.
+Te gebruiken met: \textit{.findBooks(book -> book.yearOfIssue < 2000)}.
+
+\subsection{Overzicht}
+Overzicht van functionele interfaces met omschrijfing en bijpassende methode.
+\begin{center}
+    \begin{longtable}{lp{5cm}l}
+        Interface   & Omschrijving & Methode \\
+        \midrule
+        Consumer<T>         & \'e\'en argument van type T dat niets terug geeft.        & .accept(t) \\
+        Predicate<T>        & \'e\'en argument van type T dat boolean terug geeft.      & .test(t) \\
+        BiConsumer<T, U>    & \'e\'en argument van type T en U dat niets terug geeft.   & .test(t, u) \\
+        UnaryOperator<T>    & \'e\'en argument van type T dat type T terug geeft.       & .apply(t) \\
+        Function<T, R>      & \'e\'en argument van type T en type R terug geeft.        & .apply(t) \\
+        BiFUnction<T, U, R> & twee argumenten van type T en U dat type R terug geeft.   & .apply(t, u) \\
+        BinaryOperator<T>   & twee argumenten van type T en dat type T terug geeft.     & .apply(t1, t2) \\
+        Comparator<T>       & twee argumenten van type T dat integer terug geeft.       & .compare(t1, t2) \\
+        Supplier<R>         & Methode zonder argument dat type R terug geeft.           & .get() \\
+        \bottomrule
+    \end{longtable}
+\end{center}
+
+\subsection{Advanced map operators}
+\textit{compute(key, remappingFunction)}: Maakt gebruikt van de geveven transformatie functie en returned de waarde.
+\textit{merge(key, value, operatorFunction)}: Combineerd de bestaande mapped waarde met de gegeven waarde door gebruik te maken meegegeven operator functie, slaat de waarde op en geeft je het resultaat.
+\textit{forEach(action)}: Voert de actie functie uit voor ieder sleutel-waarde paar in de map.
+\textit{replaceAll(remappingFunction)}: vervang alle gemapte velden met het resultaat van het toepassen van de remapping methode on elke sleutel-waarde in de map.
+
+\subsection{Compositie}
+Functies combineren.
+\textbf{and()}: Combineer twee functies.
+\textbf{andThen}: Voer de tweede functie uit op basis van de uitkomst van de eerst functie
+
+\subsection{Default methods}
+Interfaces kunnen default methodes implementen met \textit{default} keyword, een klasse die de interface implementeren kunnen die methode gebruiken.
+Zorgt er voor dat je abstract kan zijn en een default implementatie kan hebben.
+Bijvoorbeeld: \textit{default void print() { ... }}
