@@ -1092,7 +1092,7 @@ Streams, Collectors, Method chaining
 ** 65:00 collectors example code
     - calculate average numer of authors per book
         .stream()
-        .collect(Colectors.averagingDouble(b -> b.getAuthors().size()))
+        .collect(Collectors.averagingDouble(b -> b.getAuthors().size()))
     - maak een lijst met alle titels van boeken met meer dan 3 auteurs
         .stream()
         .filter(b -> b.authors.size())
@@ -1156,7 +1156,128 @@ Streams, Collectors, Method chaining
     - bijvoorbeeld geen .count() na dat je .sum() hebt uitgevoerd.
 
 * 3, lecture 10, 2020-11-25
-(Binary) Search Trees
+Tree, Binary tree and traversals, Binary Search Trees
+
+
+** 00:00 Tree
+    - een tree is een type graaf
+    - eigenschappen tree
+        - connected graaf zonder cyclus 
+        - een edge toevoegen zou een cyclus maken
+        - als je een edge weg haalt is de graaf opgebroken 
+    - adding an adegs 
+
+** 05:00 Recursieve definitie
+    - een tree kan leeg zijn
+    - een tree is a node verbonden tot een eindig aantal bomen (subtrees)
+    - een sub-tree is een subset van trees bestaande uit nodes met hun
+      nakomelingen
+    - eigenschappen
+        - een boom met n nodes heeft precies n-1 edges
+        - er is excact een path tussen elke paar van nodes 
+
+** 07:00 directed tree
+    - een tree is een gerichte graaf
+    - graad is het aantal of kinderen connected
+    - eigenschappen
+        - er is exact een node met met input graad gelijk aan 0, dit is de
+          root node
+        - elke andere node heeft een input graad van 1
+        - elke node heft een gericht pad van de root naar die node 
+    - een tree zonder nodes is een null of empty tree
+
+** 12:00 tree terminology 1
+    - node
+        - element in de tree
+    - edge / brench
+        connectie tussen twee nodes
+    - path
+        - route door tussen nodes in de tree
+    - predecessor
+        - parent van een node
+    - ancestor
+        - node verder omhoog in de tree op een pad
+    - successor
+        - child of a node
+    - descendant
+        - node verder omlaag in de boom op een pad
+
+** 14:00 terminology in trees 2
+    - root
+        - level 0
+        - node heeft geen predecessor
+        - alle andere nodes hebben exact een predecessor
+    - leaf node heeft geen successor
+    - successor(s) van een node at level n is op level n+1
+    - depth is hetzelfde als level
+
+** 15:00 implementation
+    - Tree klasse
+        - bevat root Node
+        - find(), insert(), delete(), methods
+    - node klasse
+        - LinkedList of ArrayList van kind nodes en mogelijk parent node
+        - alle nodes in the list van child nodes wijzen naar een andere tree
+          nodes
+
+** 16:00 binary tree
+    - is een tree waar elke node een graad heeft van maximaal twee
+    - bestaat uit een root, een linker sub-tree, en een rechter sub-tree
+    - elke sub-tree van een binary tree heeft opnieuw een root, een linker
+      sub-tree en een rechter sub-tree-
+    - sub-trees kunnen leeg zijn
+
+** 21:00 binary tree implementatie
+    - linked
+        - node klasse
+            - veld voor parent, linker, en rechter node
+    - array
+        like a heap
+
+** 25:00 traversing de tree
+    - nodes van een binary tree kunnen vermeld worden in een specifieke
+      volgorde
+    - mogelijkheden
+        - preorder: root, left, right
+        - inorder: left, root, right
+        - postorder: left, right, root
+
+        - preoder: naar beneden, links van node
+        - inorder: naar rechts, onderkant van node
+        - postorder: naar boven, rechts van node
+
+** 53:00 binary search tree
+    - treeSet, TreeMap
+    - storing data in a tree to speed up seach
+    - data moet sorteerbaar zijn (Comparable)
+
+** 00:00
+    -
+
+** 00:00
+    -
+
+** 00:00
+    -
+
+** 00:00
+    -
+
+** 00:00
+    -
+
+** 00:00
+    -
+
+** 00:00
+    -
+
+** 00:00
+    -
+
+** 00:00
+    -
+
 
 * 4, lecture 11, 2020-12-02
 Undirected Graph, Minimal Spanning Tree
