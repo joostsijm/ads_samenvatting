@@ -8,26 +8,26 @@ In Java is hier voor een ArrayList en een Linkedlist.
 
 \subsubsection{ArrayList}
 Dit is een list gebaseerd op een array, de array houd de informatie vast.
-Door middel van een variable \textit{Lenghte} weet je waar het laatste item van je collectie is.
+Door middel van een variable \texttt{Length} weet je waar het laatste item van je collectie is.
 In de construtor van de klasse initialiseer je de array met een zelf bepaalde lengte.
-\textbf{Toevoegen} gebeurt door eerst \textit{length} te vergelijken met de lengte van de array.
-Wanneer \textit{length} gelijk is maak je een nieuwe array aan met de dubbele lengte van de huidige array.
+\textbf{Toevoegen} gebeurt door eerst \texttt{length} te vergelijken met de lengte van de array.
+Wanneer \texttt{length} gelijk is maak je een nieuwe array aan met de dubbele lengte van de huidige array.
 Daarna kopier je de waardes van de oude array, en vervang je hem.
-Vervolgens kan je op de index van \textit{length} de nieuwe waarde toevoegen.
-\textbf{Verwijderen}, check eerst of de gegeven index lager is dan \textit{length}.
-Verplaats alle elementen die na de gegeven index komen een terug, en verlaag \textit{length} met een.
+Vervolgens kan je op de index van \texttt{length} de nieuwe waarde toevoegen.
+\textbf{Verwijderen}, check eerst of de gegeven index lager is dan \texttt{length}.
+Verplaats alle elementen die na de gegeven index komen een terug, en verlaag \texttt{length} met een.
 
 \subsubsection{LinkedList}
 Gebruikt geen array, maar nodes die onderling aan elkaar gelinked zijn.
-Deze node is een prive klasse die de waarde vasthoud en een \textit{next} property heeft naar de volgende node.
-De list zelf houd een referentie naar de eerste, \textit{head}, en laatste, \textit{tail}, node bij.
+Deze node is een prive klasse die de waarde vasthoud en een \texttt{next} property heeft naar de volgende node.
+De list zelf houd een referentie naar de eerste, \texttt{head}, en laatste, \texttt{tail}, node bij.
 \textbf{Add} maak een node aan met de opgegeven waarde.
-Controller of \textit{head} bestaat, zo niet verwijst die naar deze node.
-Anders wordt de node toevegoed aan de \textit{next} van van \textit{tail}
-Vervolgens wordt \textit{tail} vervangen met de nieuwe node.
-\textbf{Get} voor het terughalen van een index begin je bij \textit{head} en tel je \textit{next} tot je bij de gewenste index bent.
-\textbf{Exists}, loop over de nodes van af \textit{head}, wanneer er een match is return \textit{true}, als er geen match is return \textit{false}.
-\textbf{Delete} van af head lopen naar de gewenste node, onthoud de laatst bezichte node. Bij de gewenste index laat de \textit{next} van laatst bezochte node verwijzen naar de \textit{next} van de matchende node.
+Controller of \texttt{head} bestaat, zo niet verwijst die naar deze node.
+Anders wordt de node toevegoed aan de \texttt{next} van van \texttt{tail}
+Vervolgens wordt \texttt{tail} vervangen met de nieuwe node.
+\textbf{Get} voor het terughalen van een index begin je bij \texttt{head} en tel je \texttt{next} tot je bij de gewenste index bent.
+\textbf{Exists}, loop over de nodes van af \texttt{head}, wanneer er een match is return \texttt{true}, als er geen match is return \texttt{false}.
+\textbf{Delete} van af head lopen naar de gewenste node, onthoud de laatst bezichte node. Bij de gewenste index laat de \texttt{next} van laatst bezochte node verwijzen naar de \texttt{next} van de matchende node.
 
 Er bestaan verschillende types.
 \textbf{Singular}: iedere node refereerd naar de volgende node in de list.

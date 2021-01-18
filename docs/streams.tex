@@ -1,0 +1,107 @@
+\section{Streams}
+Streams zijn een sequentie van elementen dat geaggregeerde operaties ondersteund.
+Andere manier om een for each te doen door middel van een compate notatie van pipeline verwerking van een reeks waarden.
+De Collectie interface implementeert de \texttt{Stream}, dus het wordt door iedere collectie ondersteund.
+\texttt{ParallelStream} geeft een verbetering van performance door multi-threading te gebruiken, maar vereist dat je code thread-safe is.
+Er zijn twee soorten methodes voor een stream.
+\textbf{Mapper}: dit is een tussenligende steam bewerkingen, en geeft een stream terug.
+Zoals, \texttt{filter()} met een functionele interface als parameter.
+\textbf{Reducer}: dit is een terinale methode, stopt de stream.
+Zoals, \texttt{count()} dat het aantal elementen telt.
+
+\subsection{Lazy}
+Er vindt pas een bewerking op de databron plaats wanneer de terminal oparation is begonnen.
+Dat betekend dat een element eerst door de complete pipeline gaat voor het volgende element opgevraagd wordt.
+Het geheugen efficientie van de meeste stream operations is daarom $O(1)$.
+Grote databronnen kunnen verwerkt worden met een lage gehugen voetprint.
+
+\subsection{Method chaining}
+Ook bekend als dot-chaining, verbeterd de code beknoptheid en leesbaarheid.
+Worden gebruikt door streams voor het flexibel toepassen van combinaties van operaties in elke volgorde.
+
+\subsection{Mapper}
+Is een tussenliggende steam bewerking voor het selecteren en transformeren van waardes, levert een andere stream terug.
+Methodes: \texttt{map(Function<T, R>)}, \texttt{mapToInt()}, \texttt{mapToDouble()}, \texttt{filter(Predicate<T>)}, \texttt{distinct}, \texttt{limit(maxSize)}, \texttt{flatMap(Function<T, Stream<R>>)}.
+
+\subsection{Reducer}
+Is een final method die de waardes verzameld of combineert en terug geeft.
+Methodes: \texttt{anyMatch(Predicate<T>)}, \texttt{allMatch(Predicate<T>)}, \texttt{NoneMatch(Predicate<T>)}, \texttt{sum()}, \texttt{count()}, \texttt{reduce(BinaryOperator<T>)}.
+
+Voorbeelden: 
+Alle boeken met een author: \texttt{stream().allMatch(b -> b.getAuthors().size() > 0)}.
+Totaal nummer van pagina's: \texttt{stream().mapToInt(Book:getNumPages).sum()}.
+Maximum number van pagina's: \texttt{steam().mapToInt(Book::getNumPages).max().orElse(0)}
+
+\subsubsection{Reducer methode}
+Generic reducer methode zodat je logica zelf kan implementeren, implementeert incrementele gegevensaggregatie.
+Gebruikt BinaryOperation, eerste parameter is de uitkomst van het vorige element in de stream en tweede parameter nieuwe element in de stream.
+Vind boek met langste titel: \texttt{stream().reduce((b1, b2) -> (b.getTitle().length() > b2.getTitle().length() ? b1 : b2)).get()}
+Verschillende signatures:
+\textbf{reduce(BinaryOperator<T> accumulator)}: Alleen een accumulator, reducer start leeg.
+\textbf{reduce(T identity, BinaryOperator<T> accumulator)}: Identity geeft een start waarde voor accumulator.
+\textbf{reduce(U identity, BiFunction<U ? super T, U> accumulator, BinaryOperator<T> combinor)}:
+Combinor gebruikt je als het subtotal en het element in de accumulator operatie twee verschillende types zijn.
+Of als we een parallel stream stream gebruikenen moeten we met een combinor resultaten combineren in een enkele stream.
+
+\subsection{Collector}
+Verzameld, en eventueel verkleind en / of transformeerd, invoer elementen in een container.
+Methodes:
+\textbf{Steam to Collection}: \texttt{toList()}, \texttt{toSet()}.
+\textbf{Stream to String}: \texttt{joining(delimiter, prefix, postfix)}.
+\textbf{Stream to Map}: \texttt{toMap(keyMapper, valueMapper, merge)}, \texttt{groupingBy(classifier)}.
+\textbf{Statistics calculators}: \texttt{averagingDouble(mapper)}, \texttt{summarizingDouble(mapper)}, \texttt{maxBy(comparator)}, \texttt{minBy(comparator)}.
+\textbf{Generic Reducer}: \texttt{reducing(identity, binaryOperator)}.
+
+Voorbeelden:
+Maak een set van alle boeken voor 2000:
+\texttt{.stream().filter(b -> yearOfIssue < 2000).collect(collectors.toSet())}
+Bereken gemiddelde nummer van autheurs per boek:
+\texttt{.stream()collect(Collectors.averagingDouble(b -> b.getAuthors().size()))}
+Maak een lijst van alle titels van boeken met meer dan drie auteurs:
+\texttt{.stream().map(Book::getTitle).collect(Collectors.joining("\\n", "- book titles", "-"))}
+
+\subsubsection{Collect to Map}
+Maakt een Map<K,V> van een Stream<T>.
+
+\textbf{toMap()}: 
+Specificeer de key en waarde in een funcitie en geeft een functie om ze te mergen.
+\texttt{toMap(Function<T,K> keyMapper, Function<T,V> valueMapper, binaryOperator<V> merger)}.
+Voorbeeld, maak een lijst van auteurs met het aantal gepubliseerde boeken:
+\texttt{.stream().flatMap(b -> b.getAuthors().stream()).collect(Collectors.toMap(a -> a,a -> 1, math::addExact))}.
+
+\textbf{groupingBy()}: vergelijkbaar met \textit{group by} in SQL.
+\texttt{groupingBy(Function<T,K> keyMapper, Collector<T,?,V> reducer)}.
+Voorbeeld, maak een lijst van alle auteurs met totaal aantal van gepublisheerde boeken:
+\texttt{.stream().flatMap(b -> b.getAuthors().stream()).collect(Collectors.groupingBy(a -> a, Collectors.counting()))}
+
+\subsection{Optional<T>}
+Is een datatype met \'e\'en optionele waarde, terug geven door sommige reducers.
+Als een collectie leeg is of er geen match is in de filter is Optional ook leeg.
+Methodes:
+\texttt{get()}: geeft waarde als het bestaat, anders exceptie.
+\texttt{orElse()}: geeft waard als het bestaat, anders opgegeven waarde.
+\texttt{isEmpty()}: false als waarde bestaat, anders true.
+
+\subsection{Primitieve types}
+Het verschil tussen Stream<Double> en DoubleStream, het concept is hetzelfde maar implementatie is anders.
+\textbf{Stream<Double>}:
+Een stream van Double objecten, heeft extra method: \texttt{.collector(Collector)}.
+Verander in een DoubleStream: \texttt{.mapToDouble(x -> x)}.
+
+\textbf{DoubleStream}:
+Een stream van primitieve van primitieve Doubles, heeft extra method: \texttt{.average()}.
+Verander in een Stream<Double>: \texttt{.boxed()}.
+
+\subsection{Sorted streams}
+Sorteer een steam met \texttt{.sorted(Comparator<T>)}.
+Extra functies: \texttt{dropWhile(Predicate<T>)}, \texttt{.takeWhile(Predicate<T>)}.
+Nadeel is dat het streams minder efficient maken omdat elementen eerst gesorteerd moeten worden.
+
+\subsection{Stream operations}
+Operaties op de stream moeten niet interferend zijn, niet de born van de stream aanpassen.
+In de meeste gevallen staatloos zijn, niet afhankelijk van veranderingen in de staat tijdens uitvoren van de pipeline.
+Vermijd bijwerkingen, veranderen van globale data buten de scope van de pipeline.
+
+\subsection{Forks}
+Streams kunnen na het uitvoeren van een terminal operations niet opnieuw gebruikt worden.
+Bijvoorbeeld geen \texttt{.count()} na dat je \texttt{.sum()} hebt uitgevoerd.

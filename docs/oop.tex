@@ -77,13 +77,13 @@ Zonder zou ieder object in ongecontrolleerd in een collectie toegevoegd kunnen w
 Bij het ophalen van het object moet het eerst gedowncast worden om te gebruiken.
 
 \subsubsection{Java Collections API}
-Java implementatie van abstracte data types, \textit{java.util.Collection}.
+Java implementatie van abstracte data types, \texttt{java.util.Collection}.
 Zijn gebaseerd op \textbf{AbstractCollection} en implementeren de \ interface \textbf{Collection}.
 Bevat bijna ieder type van collectie.
 
 \subsubsection{Iterable}
 Is een interface dat door een collectie geimplementeerd word, returned \textbf{Iterator}.
-Dat is ook een interface, geimplementeerd door een private klass binnen de collectie klasse bevat \textit{hasNext()} en \textit{next()} methodes.
+Dat is ook een interface, geimplementeerd door een private klass binnen de collectie klasse bevat \texttt{hasNext()} en \texttt{next()} methodes.
 Maakt het makkelijk om een collectie in een loop te zetten.
 Een \textbf{for each} is een shorthand versie van een while loop die gebruikt maakt van de iterator.
 
@@ -107,7 +107,7 @@ Een \textbf{for each} is een shorthand versie van een while loop die gebruikt ma
 Zijn de meest primitieve versie van een data type, zijn geen objecten en kunnen daarom niet in een collectie gebruikt worden.
 Door middel van een wrapper klasse wordt de waarde van de primitieve variable in een object vastgehouden.
 Bijvoorbeeld: int, Integer.
-De wrapper klasse heeft ook meer functies, zoals bijvoorbeeld het parsen van een \textit{String} met \textit{Integer.parseInt()}.
+De wrapper klasse heeft ook meer functies, zoals bijvoorbeeld het parsen van een \texttt{String} met \texttt{Integer.parseInt()}.
 Door middel van autoboxing worden primitieve types automatisch in een wrapper geplaatst.
 De wrapper versie van een primitieve klasse is minder snel.
 
@@ -133,7 +133,7 @@ Verschillende manier om op een oplossing te komen.
 
 \subsection{Comparable}
 Wanneer een klasse dit implementeerd kan het vergeleken worden met een andere instantie van deze klasse.
-Door middel van de \textit{compareTo()} methode die in de klas is geimplementeerd.
+Door middel van de \texttt{compareTo()} methode die in de klas is geimplementeerd.
 De methode heeft een ander object als parameter waar het dan mee vergelijkt wordt en returned een integer.
 Als de huidige instantie voor de megegeven instantie moet komen geeft het iets kleiner dan 0, anders hoger dan 0, als het gelijk is geeft het 0 terug.
 De meeste standaard klassen implementeren de comparator, dit gebeurt op natuurlijke ordering: A-Z, a-z, 0-9, etc.
@@ -141,4 +141,4 @@ De meeste standaard klassen implementeren de comparator, dit gebeurt op natuurli
 \subsubsection{Comparator}
 Is een extra sorteert klasse, die binnen of buiten de klasse gedeclareerd kan worden.
 Zorgt er voor dat je op andere manieren kan sorteren.
-Vergelijkt twee instanties van klassen met de \textit{compare} methode.
+Vergelijkt twee instanties van klassen met de \texttt{compare} methode.

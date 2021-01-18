@@ -936,6 +936,225 @@ Builder pattern voorbeeld
 * 2, lecture 9, 2020-11-18
 Streams, Collectors, Method chaining
 
+** 01:00 Stream
+    - sequentie van elementen dat geaggregeerde operation ondersteund
+    - andere manier om een for each te doen 
+    - geeft een compacte notatie van pipeline verwerking van een reeks waarden
+
+** 03:00 voorbeeld
+    - begin met een collectie
+    - .stream() veranderd het in een stream
+    - verwerkt items eens per keer
+    - tussenliggende stream-bewerkingen
+        - filter() methode met functionele interface als parameter
+        - je kan functies doen die een stream terug geven
+    - terminal operation
+        - count() methode
+        - geeft waarde terug
+
+** 06:00 Lazy
+    - bewerking op de data bron wordt alleen uitgevoegd wanneer de terminal
+     operation is begonnen 
+    - bron element zijn alleen gebruikt wanneer ze nodig zijn
+        - een element gaat door de complete pipline voor het volgende element
+          opgevraagd wordt
+        - verbeterde rekenprestaties worden in acht genomen (paralel stream)
+    - geheugen footprint van meeste geleverde stream operations is O(1)
+        - betekend dat grote data bronnen verewerkt kunnen worden met lage
+          geheugen voetprint 
+
+** 09:00 Method chaining
+    - ook bekend als dot-chaining
+    - flexibel voor toepassen combinatie van operaties in elke volgorde
+    - verbeterd code beknoptheid en leesbaarheid 
+
+** 11:00 Every collection can be streamed
+    - collection interface implementeerd stream() en parallelStream
+    - parallelStream gebruikt multi-threading op meerde processor kernen om
+      uitvoering te versnellen
+      - vereist is dat de code thread-safe is (nu niet gebruiken)
+
+** 16:00 stream operators
+    - mappers en reducers
+    - mapper
+        - intermediate methode
+        - selecteerd en transformeert waarden 
+        - levert een andere stream terug
+        - methods
+            - map(Function<T, R>)
+            - mapToInt()
+            - mapToDouble()
+            - filter(Predicate<T>)
+            - distinct
+            - limit(maxSize)
+            - flatMap(Function<T, Stream<R>>)
+    - reducer
+        - final method
+        - verzameld / combineert waardes
+        - levert een data waarde
+        - methods 
+            - anyMatch(Predicate<T>)
+            - allMatch(Predicate<T>)
+            - NoneMatch(Predicate<T>)
+            - sum()
+            - count()
+            - reduce(BinaryOperator<T>)
+
+** 22:00 Example check author
+    - check if all books have author
+    - get all books with author
+        - stream().allMatch(b -> b.getAuthors().size() > 0)
+    - get total number of pages 
+        - stream().mapToInt(Book:getNumPages).sum()
+    - get maximum number of pages
+        - steam().mapToInt(Book::getNumPages).max().orElse(0)
+
+** 30:00 Optional<T>
+    - datatype met optionele waarde
+    - wordt door sommige reducers gegeven
+    - als er stream leeg is, of er is geen match vanwege een filter, dan is 
+      Optional<T> ook leeg
+    - methodes
+        - get(): als bestaad: waarde van T, ander exception 
+        - orElse(): als bestaad: waarde van T, defaultValue van type T
+        - isEmpty, als bestaad: false, anders true
+
+** 32:00 Reduce method
+    - implementeert incrementele gegevensaggregatie (zoals elke reducer)
+    - is een abstract reducer, je kan zelf implementeren
+    - vereist een associatieve BinaryOperation, functie met twee parameters
+    - signature
+        - identity
+            - initiele waarde van de reduction methode
+            - standaar resultaat als de stream leeg is
+        - accumulator
+            - heeft twee parameters, waar van een de output is van de
+            reductie operator en hte volgende element van de stream
+        - combinor
+
+    - accumilator is taking the partial result of the reduction operation in
+      some, i'll type some excample in the chat
+
+    - reduce(BinaryOperator<T> accumulator)
+        - alleen een accumulator, reducer start leeg 
+    - reduce(T identity, BinaryOperator<T> accumulator)
+        - bereken sum van elementen
+            - reduce(0, (subtotal, element) -> subtotal + element);
+    - reduce(U identity, BiFunction<U ? super T, U> accumulator, BinaryOperator<T> combinor)
+        - identity, accumulator, combiner 
+        - bifunciton similar to binary operator
+            - two arguments of type t and u and type R
+
+        BI Function = A function with two arguments of types T and U and a result of type R
+        BinaryOpertator = A function with two arguments of type T and the same result type T
+
+        - if the subtotal en the element of our accumulation operation are
+          two different types kan je compilatie problemen hebben
+        
+        - if we use sequencial streams and the types of the accumilator
+          arguments and the types of the implementation match, then we dont
+          need to use a combiner
+        - if we are using a paralel stream split into stream we have to use a
+          combiner to combine the results of a single stream
+
+** 44:00 Reducer example
+    - vindt boek met langste titel
+        stream().reduce( (b1, b2) -> 
+            (b.getTitle().length() > b2.getTitle().length() ? b1 : b2)
+        ).get()
+
+** 60:00 Collectors
+    - verzamelt invoerelementen in een resultaat container
+    - eventueel verkleinen en / of transformeren naar een definitieve
+      representatie 
+    - interface Collector<T, A, R>
+
+    - example build set of all books before 2000
+        - .stream().filter(b -> yearOfIssue < 2000).collect(collectors.toSet())
+
+    example collectors
+        - steam to Collection
+            - toList()
+            - toSet()
+        - stream to string
+            - joining(delimiter, prefix, postfix)
+        - stream to map
+            - toMap(keyMapper, valueMapper, merge)
+            - groupingBy(classifier)
+        - statistics calculators
+            - averagingDouble(mapper)
+            - summarizingDouble(mapper)
+            - maxBy(comparator)
+            - minBy(comparator)
+        - generic reducer
+            - reducing(identity, binaryOperator)
+
+** 65:00 collectors example code
+    - calculate average numer of authors per book
+        .stream()
+        .collect(Colectors.averagingDouble(b -> b.getAuthors().size()))
+    - maak een lijst met alle titels van boeken met meer dan 3 auteurs
+        .stream()
+        .filter(b -> b.authors.size())
+        .map(Book::getTitle)
+        .collect(Collectors.joining("\n", "- book titles", "-"))
+
+** 72:00 flatmap
+    - hoe vindt je alle authors dat een boek hebben gepubliceert voor 2000
+    - steam boeken, filter voor 2000, map boek naar auteur, collect auteur
+    - code
+        .stream()
+        .filter(b -> b.yearOfIssue < 2000)
+        .flatMap(b -> b.getAuthors().stream())
+        .collect(Collectors.toSet())
+
+** 76:00 collecting into a map
+    - maak een Map<K,V> van een Stream<T>
+    - toMap()
+        - toMap(Function<T,K> keyMapper, Function<T,V> valueMapper, binaryOperator<V> merger)
+    - groupingBy()
+        - vergelijkbaar met group by in SQL
+        - groupingBy(Function<T,K> keyMapper, Collector<T,?,V> reducer)
+
+** 79:00 code example
+    - maak een lijst van alle auteurs met totaal nummer van gepublisheerde boeken 
+        .stream()
+        .flatMap(b -> b.getAuthors().stream())
+        .collect(Collectors.toMap(a -> a,a -> 1, math::addExact))
+
+** 82:00
+    - maak een lijst van alle auteurs met totaal aantal van gepublisheerde boeken
+        .stream()
+        .flatMap(b -> b.getAuthors().stream())
+        .collect(Collectors.groupingBy(a -> a, Collectors.counting()))
+
+** 89:00 Stream<Double> vs DoubleStream
+    - concept is hetzelfde maar implemenatatie is anders
+    - Stream<Double>
+        - een stream van Double objecten
+        - Naar DoubleStream: .mapToDouble(x -> x)
+        - geeft extra method: .collector(Collector)
+    - DoubleStream
+        - een primitive Stream van primitive doubles
+        - naar Stream<Double>: .boxed()
+        - geeft extra method: .average()
+
+** 91:00 sorted streams
+    - sorteer een stream met .sorted(Comparator<T>)
+    - extra functies: .dropWhile(Predicate<T>), takeWhile(Predicate<T>)
+    - nadeel: maakt stream minder efficient
+
+** 93:00 Stream operations
+    - moeten niet interferend zijn, niet bron van de stream aanpassen
+    - in de meeste gevalen staatloos zijn, niet afhankelijk van veranderingen
+      in de staat tijdens het uitvoerenin de pipeline 
+    - vermijden van bijwerkingen, veranderen van globale data buiten de scope
+      van de pipeline
+
+** 94:00 streams can't be forked
+    - na de terminal operation can de stream niet meer gebruikt worden
+    - bijvoorbeeld geen .count() na dat je .sum() hebt uitgevoerd.
+
 * 3, lecture 10, 2020-11-25
 (Binary) Search Trees
 

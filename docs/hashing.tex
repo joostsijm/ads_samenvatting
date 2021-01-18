@@ -6,29 +6,29 @@ Voorbeeld: versleutelen van een wachtwoord.
 \subsection{Java hashing}
 Voor Java collections is de hash een operatie dat een waarde verstrooid / mapped naar een willekeurige integer.
 In vergelijking met standaard hashing deze hash mogelijk onomkeerbaar, door dat er mogelijk duplicaten ontstaan, maar het lieft zo weinig mogelijk.
-Data structuren gebaseerd op hash zijn: HashSet en HashMap, voor de elementen moet \textit{hashCode} en \textit{equals} correct geïmplementeerd zijn.
+Data structuren gebaseerd op hash zijn: HashSet en HashMap, voor de elementen moet \texttt{hashCode} en \texttt{equals} correct geïmplementeerd zijn.
 
-als methode \textit{equals} waar is moet de methode \textit{hashCode} ook hetzelfde zijn.
-Als \textit{equals} methode niet waar it kan de \textit{hashCode} anders zijn, maar is niet verplicht.
-Wanneer \textit{equals} en \textit{hashCode} niet zijn geimplementeerd worden de methodes van de supper klasse gebruikt.
-Als die er niet is wordt de methodes uit \textit{Object} gebruikt, die vergelijkt de positie in het geheugen (referentie).
+als methode \texttt{equals} waar is moet de methode \texttt{hashCode} ook hetzelfde zijn.
+Als \texttt{equals} methode niet waar it kan de \texttt{hashCode} anders zijn, maar is niet verplicht.
+Wanneer \texttt{equals} en \texttt{hashCode} niet zijn geimplementeerd worden de methodes van de supper klasse gebruikt.
+Als die er niet is wordt de methodes uit \texttt{Object} gebruikt, die vergelijkt de positie in het geheugen (referentie).
 
 \subsubsection{Equals}
 Vergelijk of twee elementen gelijk zijn aan elkaar.
 Stappen:
 Controller of het object de huidige instantie is.
-Controlleer of object niet \textit{null} is en of de klasses niet hetzelfde zijn.
+Controlleer of object niet \texttt{null} is en of de klasses niet hetzelfde zijn.
 Cast het object anders naar de klasse van de huidige instantie.
 Controlleer of identificerende velden gelijk zijn.
 
 \subsubsection{HashCode}
-Methode dat, afhankelijk van de input, consistent een interger terug geeft, dit kan van \textit{Integer.MIN\_VALUE} tot \textit{Integer.MAX\_VALUE}.
+Methode dat, afhankelijk van de input, consistent een interger terug geeft, dit kan van \texttt{Integer.MIN\_VALUE} tot \texttt{Integer.MAX\_VALUE}.
 De perfect hash methode zou alle waardes uniform verdelen, dat levert een betere performance vanwege weinig collisions.
 Java datatypes hebben vaak al een eigen implementatie, zoals String dat een waarde berekend op basis van characters, en Integer dat zijn eigen waarde returned.
 
 Simpel voorbeeld:
 Nummerborden van auto's bijhouden dat bestaat uit een combinatie van twee cijfers en een letter.
-Geef letters een waarde van 1 tot 26, berekennen hashCode met: \textit{letterwaarde * 100 + cijfers}.
+Geef letters een waarde van 1 tot 26, berekennen hashCode met: \texttt{letterwaarde * 100 + cijfers}.
 
 \subsection{Index berekenen}
 Voor het gebruik in een collectie wordt er een index berekend op basis van de hashCode.
@@ -51,7 +51,7 @@ Nadeel is dat er clusters ontstaan.
 Nadeel is dat er geen primare clusters maar wel secundaire clusters ontstaan.
 \textbf{Double hashing}: De waarde opnieuw hashen om een stap grote te krijgen, om zo te voorkomen dat er collisions dezelfe stap grote krijgen.
 Dit doe je met een andere methode dan de primaire hash methode, ook moet je voorkomen een stapgrote van 0 te krijgen.
-Voorbeeld: \textit{stepSize = 1 + hash(waarde) \% CONSTANT}, waarbij CONSTANT een int kleiner dan de lengte van de array is.
+Voorbeeld: \texttt{stepSize = 1 + hash(waarde) \% CONSTANT}, waarbij CONSTANT een int kleiner dan de lengte van de array is.
 
 \subsubsection{Separate chaining}
 Wanneer de voorgestelde index al bezet is worden de waardes in een LinkedList toegevoegd.
