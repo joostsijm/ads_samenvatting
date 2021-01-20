@@ -1165,7 +1165,6 @@ Tree, Binary tree and traversals, Binary Search Trees
         - connected graaf zonder cyclus 
         - een edge toevoegen zou een cyclus maken
         - als je een edge weg haalt is de graaf opgebroken 
-    - adding an adegs 
 
 ** 05:00 Recursieve definitie
     - een tree kan leeg zijn
@@ -1180,7 +1179,7 @@ Tree, Binary tree and traversals, Binary Search Trees
     - een tree is een gerichte graaf
     - graad is het aantal of kinderen connected
     - eigenschappen
-        - er is exact een node met met input graad gelijk aan 0, dit is de
+        - er is exact een node met input graad gelijk aan 0, dit is de
           root node
         - elke andere node heeft een input graad van 1
         - elke node heft een gericht pad van de root naar die node 
@@ -1200,7 +1199,7 @@ Tree, Binary tree and traversals, Binary Search Trees
     - successor
         - child of a node
     - descendant
-        - node verder omlaag in de boom op een pad
+        - node verder omlaag in de tree op een pad
 
 ** 14:00 terminology in trees 2
     - root
@@ -1246,38 +1245,142 @@ Tree, Binary tree and traversals, Binary Search Trees
         - inorder: naar rechts, onderkant van node
         - postorder: naar boven, rechts van node
 
-** 53:00 binary search tree
-    - treeSet, TreeMap
+** 53:00 binary search tree (treeSet)
+    - treeSet
     - storing data in a tree to speed up seach
     - data moet sorteerbaar zijn (Comparable)
+    - links is kleiner, rechts is groter 
+
+** 56:00 Binary search tree
+    - TreeMap
+    - BST
+    - elke node heeft een key, value
+    - binary tree in symmetrishe volgorde 
+    - links is kleiner, rechts is groter 
+
+** 58:00 adding an element to BST
+    - beweeg naar de root 
+    - als item links < item in node, ga naar links, anders naar rechts
+    - als child leeg is sla je item daar op, anders herhaal
+
+** 61:00 Searching to BST
+    - start van af de root node
+    - if item = item in node, found
+    - if item < item in node, ga naar linker positie, anders ga naar rechter
+      positie
+    - als de child leeg is het niet gevonden, ander herhaal
+    - efficiency
+        - gemiddeld: O(log n)
+        - worst case: O(n)
+
+** 68:00 BST (treeMap)
+    - node klasse 
+        - velden: key, value, node left, node right
+
+** 68:00 BST API
+    - BST klasse
+    - methodes
+        - put toevoegen
+        - get opvragen
+        - delete verwijderen
+        - Iterable iterator
+
+** 70:00 Get
+    - geeft de waarde geassocieerd met sleutel of null als de key niet
+      aanwezig is
+    - instructie while loop
+        - maak een node variable aan met als waarde root
+        - start een while loop zo lang de node variable niet null is
+        - vergelijk de key met de waarde die je zoekt
+        - als het lager is pak de linker node, anders rechter node
+        - als het gelijk is return 
+    - instructie recursion
+        - public methode roept private recursive methode met root en key
+        - als node null is return null
+        - vergelijk de key met de waarde die je zoekt
+        - als het lager is roep methode met linker node, anders rechter node
+        - ander return waarde
+
+** 73:00 put
+    - recursion
+    - zoek voor key
+    - als de key in de tree zit reset de waarde
+    - als de key niet in de tree zit voeg een nieuwe node toe
+    - reset references op de weg omhoog
+
+** 77:00 shape of the tree
+    - afhankelijk van de volgorde waar in je items toe voegt
+    - best case: verdeeld 
+    - worst case: alles links of alles rechts 
+    - heeft invloed op de prestatie
+
+** 78:00 Balanced search trees
+    - om worst case scenario's te voorkomen zijn
+    - red-black trees
+        - automatisch balanceert
+        - symetrich 
+        - gebruikt door Java voor TreeMap implementatie 
+    - passen hun root node aan om gebalanceerd te blijven op een manier dat
+      volgorde van toevoegen niets uit maakt 
+
+** 80:00 binary expression tree
+    - expressions in a tree
+    - methode om wiskundige expressie uit te beelden
+    - rekenkundige en logische uitdrukkingen in een boom
+    - variabelen vormen de bladeren
+    - operators zijn altijd de root van een sub-tree 
+
+** 92:00 order bases method
+    - vindt minimum
+    - vindt maximum
+    - floor
+        - grootste key <= aan een geven key
+        - floor(g) = e
+        - floor(d) = c
+    - ceiling
+        - kleinste key >= aan een gegeven key
+        - ceiling(q) = r
+
+** 96:00 bereken de floor
+    - te zoeken key is k
+    - als k gelijk is aan root is root de floor
+    - als k kleiner is dan root
+        ga naar links 
+    - als k groter is dan root
+        - floor is in de right sub tree als er een key kleiner dan k is in
+          the right sub tree
+        - ander is het de key van de root
+
+** 101:00 rank and select
+    - rank
+        hoe veel key < k
+    - select
+        - key van gegeven rank
+    - elke node houd het aantal subnodes bij
 
 ** 00:00
-    -
+    - 
 
 ** 00:00
-    -
+    - 
 
 ** 00:00
-    -
+    - 
 
 ** 00:00
-    -
+    - 
 
 ** 00:00
-    -
+    - 
 
 ** 00:00
-    -
+    - 
 
 ** 00:00
-    -
+    - 
 
 ** 00:00
-    -
-
-** 00:00
-    -
-
+    - 
 
 * 4, lecture 11, 2020-12-02
 Undirected Graph, Minimal Spanning Tree
