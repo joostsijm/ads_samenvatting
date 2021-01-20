@@ -1476,6 +1476,105 @@ Undirected Graph, Minimal Spanning Tree
 * 5, lecture 12, 2020-12-09
 Path Searching, Dijkstra Shortest Path
 
+** 01:00 minimum spanning tree
+    - een weighted grafp is een graaf waar de edges een gewicht hebben
+    - gewicht
+        - afstand
+        - reisttijd
+        - weerstand in een elektrisch 
+        - verschil van hoogte
+
+** 07:00 mimimum spanning trees
+    - in een weighted graph is de minimum spanning tree een tree waar van de
+      sum van gewichten minimaal is
+    - alle nodes moeten verbonden zijn
+    - edges hebben een positief gewicht
+    - als edges hetzelfde gewicht hebben kan het zijn dat er meerdere MST zijn
+
+** 09:00 Cut property
+    - een cut is een divisie van nodes in twee niet empty en niet
+      overlappende subsets dat alle nodes bevatten 
+    - de edge tussen de nodes van de subsets met het laagste gewicht zit per
+      definitie in de MST
+    - dit wordt gebruikt in zoek algoritmes
+
+** 10:00 Greedy algorithm
+    - begin met een graaf met V nodes
+    - markeerd alle edges van de MST 
+    - nadeel: is niet altijd efficient
+    - operatie
+        - kies een cut waar geen gemarkeerde edge in zit
+        - kies een lijn met het laagste gewicht en markeert het
+        - als er minder dan V-1 edges gemarkeerd zijn, herhaal
+
+** 12:00 Prim's algorithms
+    - als een soor uitspreidende vlek
+    - operatie
+        - kies een willekeurig punt
+        - maak een cut waar aan een kant de start node zit
+        - voeg de edge met het laagste gewicht toe aan de mst
+        - maak een cut met de de nodes van de MST en de rest
+        - herhaal
+
+** 18:00 Kruskal's algorithm
+    - als een bos dat uiteingelijk naar een grote tree groeit
+    - sorteer de edges naar oplopend gewicht 
+    - efficiente manier voor cycle test
+    - beginnen met een graaf met V nodes 
+    - operaties:
+        - kies de edge met het laagste gewicht dat geen cycle maakt met de
+          edges in de MST en voeg het toe aan de MST
+
+** 22:00 Data structure for MST
+    - klasse Edge
+        - tot nu toe werden alleen links tussen nodes gerepresenteerd
+        - maak een klasse voor edge met de velden van en naar node en weight.
+    - klasse EdgeWeightedGraph
+        - veld voor het aantal nodes en een adjecency list voor edges
+
+** 35:00 weighted directed graph
+    - er bestaat geen pad tussen alle nodes ook is de graaf connected
+    - follow arrow direction
+    - gewicht groter of gelijk aan 0
+
+** 37:00 shortest path algorithms
+    - maakt shortest path tree van star node naar iedere toegankelijke node van de graaf
+    - algoritmes
+        - dijkstra
+        - floyd
+        - a*
+
+** 38:00 Dijksta's shortest path
+    - gepublisheerd in 1959
+    - start van af een begin punt
+    - extend de spanning tree met een edge dat je de kortste afstand geeft
+      van af de start node
+    - operatie
+        - van af de start node kijk naar de aanliggende node met de laagste weight
+        - noteer de weight van af start naar de de node 
+        - ga verder met de edge met het laagste totaal gewicht
+
+    - datatypes
+        - distTo
+            - array waar de afstand van af de start wordt opgeslagen
+            - initieel waarde oneindig, behalve voor start
+        - edgeTo
+            - bewaard de node van waar mee het is verbonden in de MST
+            - start heeft geen edgeTo
+
+** 50:00 relexation
+    - Als er naar een node een path gevonden is met een weight dat lager is
+      dan de huidige weight wordt het orginele path vervangen met het nieuwe
+      path
+    - distTo en edgeTo worden bijwerken
+
+    - selecterd node met de laagste distTo
+    - relax alle edges die start met die node door te controlleren of nieuwe
+      weight kleiner is dan bestaande weight, wanneer dat het geval is update
+      data
+    - markeer node als bezocht 
+    - herhaal tot alle nodes nodes bezocht zijn 
+
 * 6, lecture 13, 2020-12-16
 Graph Search Heuristics, A\*-search
 
