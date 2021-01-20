@@ -1385,6 +1385,94 @@ Tree, Binary tree and traversals, Binary Search Trees
 * 4, lecture 11, 2020-12-02
 Undirected Graph, Minimal Spanning Tree
 
+** 02:00 graaf
+    - datastructuur met nodes en edges 
+    - nodes worden verbonden door edges
+    - gebruikt in: route kaart, sociale connecties, file system, kracht
+      balans, logistiek, beslissingsondersteuning
+
+** 20:00 path
+    - simple path: pad zonder herhalende nodes 
+    - cycle: pad waar de start en eind node hetzelfde zijn
+    - connected graph: path van elke node naar elke andere node
+    - disconnected graph: niet elke node is met een pad te verbinden
+    - directed: edges zijn een richting 
+    - undirected: edge kan beide kanten op
+    - weighted graph: edges hebben waardes (afstand, kosten)
+
+    - euler path: pad waar alle connecties een keer gebruikt worden
+    - euler circuit: ealer path dat start en eindigd op dezelfde node 
+    - euler graph: een graaf met een euler cycle
+    - semi-euler path: een graaf met een euler path, maar zonder cycle
+
+    - graaf heeft een euler path als
+        - het connected is
+        - er exact twee nodes zijn met een oneven degree
+
+    - graaf heet een euler circuit als
+        - graaf verbonden is
+        - alle vertices een even degree hebben
+
+** 40:00 Hamilton
+    - hamilton path: een pad waar je alle knopen precies een keer bezoekt
+    - hamilton cycle: een pad dat eindigd waar je start 
+    - hamilton graph: een graaf met een hamilton cycle
+    - semi-hamilton path: een graaf met een hamilton path, maar zonder cycle
+
+** 42:00 Traveling salesman problem
+    - vindt het het korste pad tussen alle nodes 
+    - np-complete: verschillende problemen met dezelfde aanpak
+    - complexity O(2^n)
+    - alle mogelijke paden uitrekennen
+
+** 55:00 Tree
+    - is een graaf
+    - verbonden graaf zonder cycles
+    - aantal edges is altijd 1 minder dan het aantal nodes
+    - weghalen van een edge maakt het disconnected
+    - toevoegen van een edge maakt een cycle
+    - elk paar van nodes heeft een pad
+
+** 57:00 spanning tree
+    - spannings boog
+    - spanning tree van een connected graaf is een tree waar in
+        - alle nodes zijn gebruikt
+        - alle edges van de tree ook in de graaf voorkomen
+
+** 61:00 implementatie
+    - adjecency list
+        list met sub-lists
+    - edge klasse
+        - from en to node
+        - implementeerd hashCode en equels
+    - vertex klasse
+        - HashSet met edges
+
+    - adjecency matrix
+        - matrix van 2 dimensionale array van number
+        - representeerd verbinding tussen nodes
+        - beter voor een graaf die er erg dense is
+        - row uitgaande verbinding, column inkomende verbinding
+        - 1 is verbinding, 0 is afwezigheid van verbinding
+
+
+** 85:00 Depth first search
+    - vindt pad van begin naar eind 
+    - bijvoorbeeld steeds recht blijven lopen in een doolhof
+    - algoritme
+        - gebruik recursie
+        - track bezochte nodes en back-track wanneer er geen mogelijkheden
+          meer zijn 
+        - bouw het pad terug wanneer target gevonden is
+    - data 
+        - verzamelling bezochte nodes
+        - queue van edges voor het pad
+
+** 96:00 Breath first search
+    - in plaats van diepte de breedte
+    - eest neighbours voor dat we een level dieper gaan
+    - in plaats van recursie gebruik je een queue
+
 * 5, lecture 12, 2020-12-09
 Path Searching, Dijkstra Shortest Path
 

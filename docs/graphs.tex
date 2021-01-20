@@ -2,3 +2,56 @@
 Dit hoofdstuk beschrijft graven, met onder andere de thema's Minimal Spanning Tree, Path Searching en Graph Search Heuristics.
 Hier worden de volgende zoek algorithmes beschreven: Depth First Search, Breath First Search, Dijkstra Shortest Path, A*-search.
 % Undirected Graph, Minimal Spanning Tree, Path Searching, Dijkstra Shortest Path, Graph Search Heuristics, A*-search
+
+\subsection{Graaf}
+Is een datastructuur met nodes en edges, nodes worden verbonden met edges.
+Wordt gebruikt in bijvoorbeel: route kaart, sociale connecties, filesystem, kracht balans, logistiek, beslissingsondersteuning.
+Termen:
+\textbf{Connect}: Er is een pad mogelijk van elke node naar elke andere node.
+\textbf{Disconnected}: Niet iedere node is met een pad te verbinden.
+\textbf{Directed}: Edges hebben een richting.
+\textbf{Undirected}: Edges kunnen beide kanten.
+\textbf{Weighted}: Edges hebben een waarde (afstand, kost).
+\textbf{Dense}: Graaf met veel edges tussen de nodes.
+
+\subsection{Path}
+\textbf{simple path}: Pad van edges zonder herhalende nodes.
+\textbf{Cycle}: Pad waar de start en eind node hetzelfde zijn.
+
+\subsubsection{Euler}
+\textbf{Euler path}: Pad waar alle edges een keer gebruikt worden.
+Als er exact twee nodes zijn met een oneven degree.
+\textbf{Euler cycle}: Pad waar alle edges een keer gebruikt worden met dezelfde start en eind node.
+Als alle nodes een even degree hebben.
+\textbf{Euler Graph}: Graph met een Euler cycle.
+\textbf{Semi-Euler Graph}: Graph met een Euler path maar geen cycle.
+
+\subsubsection{Hamilton}
+\textbf{Hamilton path}: Pad waar alle nodes een keer gebruikt worden.
+\textbf{Hamilton cycle}: Pad waar alle nodes een keer gebruikt worden met dezelfde start en eind node.
+\textbf{Hamilton Graph}: Graph met een Hamilton cycle.
+\textbf{Semi-Hamilton Graph}: Graph met een hamilton path maar geen cycle.
+
+\subsection{Traveling salesman problem}
+Het is lastig om het kortste pad te vinden tussen alle nodes in een graaf.
+Dis is een np-complete probleem, een moeilijk probleem zonder efficiënte oplossing.
+Complexiteit bij bestaande oplossing $O(2^N)$, hier bij worden alle mogelijke paden uitgerekend.
+
+\subsection{Spanning tree}
+Een spanning tree van een connected graaf is een tree waar in alle nodes zijn gebruikt en alle edges van de tree ook in de graaf voorkomen.
+
+\subsection{Implementatie}
+\textbf{Adjecency List}: Een set met sub-lists waar in edge klasses worden bijgehouden, deze klassen hebben een from en to node.
+Een vertex classe implementeerd een set met edges.
+\textbf{Adjecency Matrix}: Matrix van 2 dimensionale array met integers, row voor uitgaande verbinden en column voor inkomende verbindingen.
+1 betekend verbinding, 0 is afwezigheid van verbinding.
+Beter geschikt voor een graaf met een dense graphs.
+
+\subsection{Depth-first search}
+Vindt een pad tussen een begin en eind node, een voorbeeld is het steeds rechts blijven gaan in een doolhof.
+Het algoritme gebruikt een recusieve methode, track bezochte nodes en back-track wanneer er geen mogelijkheden meer zijn.
+Bouw het pad terug wanneer de target gevonden is.
+
+\subsection{Breath-first search}
+Gaat in plaats van de diepte de breedte in, eerst worden alle neighbours bekeken en daarna pas een level dieper.
+In plaats van recursie gebruik je een queue.
