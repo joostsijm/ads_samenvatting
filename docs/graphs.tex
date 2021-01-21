@@ -32,7 +32,7 @@ Als alle nodes een even degree hebben.
 \textbf{Hamilton Graph}: Graph met een Hamilton cycle.
 \textbf{Semi-Hamilton Graph}: Graph met een hamilton path maar geen cycle.
 
-\subsection{Traveling salesman problem}
+\subsubsection{Traveling salesman problem}
 Het is lastig om het kortste pad te vinden tussen alle nodes in een graaf.
 Dis is een np-complete probleem, een moeilijk probleem zonder efficiënte oplossing.
 Complexiteit bij bestaande oplossing $O(2^N)$, hier bij worden alle mogelijke paden uitgerekend.
@@ -40,18 +40,86 @@ Complexiteit bij bestaande oplossing $O(2^N)$, hier bij worden alle mogelijke pa
 \subsection{Spanning tree}
 Een spanning tree van een connected graaf is een tree waar in alle nodes zijn gebruikt en alle edges van de tree ook in de graaf voorkomen.
 
-\subsection{Implementatie}
+\subsubsection{Implementatie}
 \textbf{Adjecency List}: Een set met sub-lists waar in edge klasses worden bijgehouden, deze klassen hebben een from en to node.
 Een vertex classe implementeerd een set met edges.
 \textbf{Adjecency Matrix}: Matrix van 2 dimensionale array met integers, row voor uitgaande verbinden en column voor inkomende verbindingen.
 1 betekend verbinding, 0 is afwezigheid van verbinding.
 Beter geschikt voor een graaf met een dense graphs.
 
-\subsection{Depth-first search}
+\subsubsection{Depth-first search}
 Vindt een pad tussen een begin en eind node, een voorbeeld is het steeds rechts blijven gaan in een doolhof.
 Het algoritme gebruikt een recusieve methode, track bezochte nodes en back-track wanneer er geen mogelijkheden meer zijn.
 Bouw het pad terug wanneer de target gevonden is.
 
-\subsection{Breath-first search}
+\subsubsection{Breath-first search}
 Gaat in plaats van de diepte de breedte in, eerst worden alle neighbours bekeken en daarna pas een level dieper.
 In plaats van recursie gebruik je een queue.
+
+\subsection{Weighted graph}
+Is een graaf waar in de edges een gewicht hebben, kan negatief of positief zijn.
+Bijvoorbeeld: afstand, reistijd, weestand van elektriciteit, verschil in hoogte.
+
+\subsection{Minimum spanning tree}
+In een weighted graph is dit een tree waar van de som van alle gewichten minimaal is.
+Alle edges moeten verbonden, wanneer er edges zijn met hetzelfde gewicht kan het zijn dat er meerdere MST zijn.
+
+\subsubsection{Datastructure MST}
+Edges worden in een eige klasse gerepresenteerd, met de velden van en naar node en double gewicht.
+De klasse EdgeWeightedGraph heeft een veld voor het aantal nodes en een adjacency list voor edges.
+
+\subsubsection{Cut property}
+Een cut is een divisie van nodes in twee niet lege en niet overlappende subsets die alle nodes bevatten.
+De edges tussen de twee node subsets met het laagste gewicht zit per definitie in de MST.
+Deze eigenschap wordt gebruikt in verschillende zoek algoritmes.
+
+\subsubsection{Greedy algorithm}
+Algoritme om de MST van een graaf te vinden.
+Begin met een graaf met V nodes.
+Operatie: 
+Kies een cut waar geen edge die al in de MST zit.
+Voeg de edge met het laagste gewicht toe aan de MST.
+Herhaal tot er minder dan V-1 edges gemarkeerd zijn.
+
+\subsubsection{Prim's algorithm}
+Algoritme om de MST van een graf te vinden, spreid zich uit als een vlek over de graaf.
+Operatie:
+Kies een willekeurig start punt voor de MST.
+Maak een cut met in \'e\'en subset alleen de MST en de andere subset de rest van de graaf zit.
+Voeg de edge met het laagste gewicht toe an de MST, en herhaal tot de MST klaar is.
+
+\subsubsection{Krugskal's algorithm}
+Algoritme om de MST van een graaf te vinden, als een bos dat uiteindelijk naar een grote tree groeit.
+Is ook een efficiente manier voor een cycle test.
+Begin door de edges op oplopend gewicht te sorteren.
+Opearties:
+Kies de edge met het laagste gewicht dat geen cycle makt met de edges in de MST en voeg hte toe aan de MST.
+Herhaal tot de MST klaar is.
+
+\subsection{Weighted directed graph}
+Een graaf waar de edges een richting hebben, er bestaat niet altijd een pad tussen alle nodes ook al is de graaf connected.
+Edges hebben een gewicht groter of gelijk aan en volgen de richting van de pijl.
+
+\subsection{Shortest path algorithms}
+Maakt een shortest path tree van af een start node naar iedere toegankelijke node in de graaf.
+Algoritmes die dit doen: Dijkstra, Floyd, A*.
+
+\subsubsection{Dijkstra's shortest path}
+Extend de spanning tre met een edge dat je de kortste afstand geeft van af de start node.
+Operatie:
+Van af de start node kijken naar de aanliggende node met de laagte weight.
+Noteer de weight van af start naar de node.
+Ga verder mte de edge met het laagste totaal gewicht.
+
+Datatypes: 
+\textbf{distTo}: Array waar afstand van af start naar een node wordt opgeslagen.
+Initiële waarde van nodes is oneindig, behalve voor start.
+\textbf{edgeTo}: Bewaart de node van af waar een node is verbonden met de MST.
+Start heeft geen edgeTo.
+
+Relaxation:
+Wanneer er naar een node een pad gevonden is met een weight dat lager is dan de huidige weight in de distTo wordt het orginele pad vervangen met het nieuwe pad.
+Operatie:
+Selecteerd node met laagste distTo.
+Relax alle edges die starten met die node door te controlleren of nieuwe weight kleiner is dan bestaande weight, wanneer dat het geval is update data.
+Markeer node als bezocht, en herhaal tot alle nodes bezocht zijn.

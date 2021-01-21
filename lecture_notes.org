@@ -1477,7 +1477,7 @@ Undirected Graph, Minimal Spanning Tree
 Path Searching, Dijkstra Shortest Path
 
 ** 01:00 minimum spanning tree
-    - een weighted grafp is een graaf waar de edges een gewicht hebben
+    - een weighted graph is een graaf waar de edges een gewicht hebben
     - gewicht
         - afstand
         - reisttijd
