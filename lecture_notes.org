@@ -1578,5 +1578,81 @@ Path Searching, Dijkstra Shortest Path
 * 6, lecture 13, 2020-12-16
 Graph Search Heuristics, A\*-search
 
+** 05:00 informed search
+    - uninformed / blind
+        - brute-force / exhaustive search
+        - bekijk alle nodes in de graaf tot er het doel is gevonden
+        - depth first search
+        - breath-first search
+
+    - informed
+        - gebruikt extra informatie van nodes die nog niet zijn bezocht om te
+          kiezen welke als volgende te kiezen 
+        - best-first search
+        - a*
+
+** 06:00
+    - complete
+        - zoek methode zal altijd de oplossing vinden
+    - optimal
+        - search methode wil altijd de beste oplossing vinden
+    - DFS is niet compleet, als search tree oneindig is, en niet optimaal
+    - BFS is compleet en optimaal wanneer je stappen telt
+    - Dijkstra en A* is complete en optimaal in weighted graphs
+
+** 15:00 Heuristic
+    - informed search heeft extra informatie (heuristic) van de graaf
+    - function
+        - functioneert als een schatting van de kost van de goedkoopste pad
+          van de node naar de goal node
+        - gebruikt om te kiezen welke node het beste is om te bezoeken
+        - hoe beter het is, hoe minder nodes er bezocht hoeven te worden
+        - het moet toelaatbaar zijn, kies de hoogst moglijk underschatting
+        - voorbeeld: afstand naar het doel
+
+** 18:00 Heuristic
+    - is een techniek ontworpen voor het oplossen van een probleem op een
+      snelere manier wanneer klasieke methodes te traag zijn
+    - Of voor het vinden van een bij benadering oplosssing wanneer klasieke
+      methodes falen in het vinden van een exacte oplossing
+    - snelheid over compleetheid, nauwkurigheid, en precisie 
+
+** 23:00 Heuristics vergelijken
+    - is meer informed wanneer het beter of gelijk is voor alle nodes in de
+      search tree
+    - goede heuristiek
+        - verminderd het aantal nodes dat vergeleken moet worden
+        - is efficient, makkelijk te berekenen
+
+** Best first search
+    - algoritme op basis van de afstand naar het doel
+
+** 42:00 A*
+    - Dijkstra++
+    - uitgebreid met een heuristic om dijkstra te versnellen 
+    - combineerd de kosten naar een node van af start met een heuristiek om
+      te kijken welke node bezocht moet worden. 
+    - als de heuristiek een onderschatting is zal A* het optimale pad vinden
+      met het minimaal aantal nodes te bezoeken
+
+** 52:00 A* path evaluation
+    - F(v) = G(v) + H(v)
+    - F(v) geschatte totaal (minimum) kosten van een pad van een gegeven punt
+      naar het doel
+    - G(v) de bekende kosten van het start punt naar een gegeven punt op de
+      graaf, volgens het berekende shortest path.
+    - H(V) de geschatte kosten om te bewegen van het gegeven punt naar het
+      doel door middel van heuristic
+
+** 58:00 Straigt line distance
+    - lookup table
+    - afstand berekenen door middel van coordinaten en pythagoras
+
+** 70:00 grid path
+    - wereld is een grid
+    - opgeslagen in een 2-dimensonaal array
+    - pad via aanliggende en diagonale vakken
+    - 8 mogelijkheden per vak
+
 * 7, lecture 14, 2021-01-06
 State Machine Algorithm

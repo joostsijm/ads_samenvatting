@@ -123,3 +123,40 @@ Operatie:
 Selecteerd node met laagste distTo.
 Relax alle edges die starten met die node door te controlleren of nieuwe weight kleiner is dan bestaande weight, wanneer dat het geval is update data.
 Markeer node als bezocht, en herhaal tot alle nodes bezocht zijn.
+
+\subsection{Informed search}
+Om het algortme te verbeteren kunnen we gebruik maken van informed search algoritme.
+Hier gebruik je extra informatie voor nodes die nog niet zijn bezocht om te kiezen welke richting je op gaat.
+Voorbeelden zijn Best-First search en A* (A-star).
+
+\textbf{Best-first Seach} Een algoritme dat gebruikt maakt van de afstand tussen de gespecificeerde node en het doel om de volgende node te kiezen.
+
+\subsubsection{Complete / optimal}
+Een algoritme dat complete is zal altijd de oplossing vinden wanneer die bestaat.
+Een algoritme dat optimal is zal altijd de beste oplossing vinden.
+DFS is niet compleet, wanneer je een oneindige graaf heb, en niet optimaal
+BFS is compleet en in een graaf zonder gewichten optioneel
+Dijkstra en A* zijn compleet en optimaal in een weighted graph.
+
+\subsubsection{Heuristics}
+Voor informed search worden heuristics gebruikt, dit is extra informatie dat het algoritme gebruikt om de weg te zoeken.
+Dit wordt gebruikt in algoritmes wanneer klasieke methodes falen in het vinden van een excacte oplossing.
+Snelheid over compleetheid, nauwkeurigheid, en precisie.
+
+Mogelijkheden voor een heuristic in path finding is bijvoorbeeld de straight line distance naar het doel.
+Dit gebruit worden door een lookup table of het berekend door gebruik te maken van de coördinaten en de stelling van Pythagoras.
+
+\subsubsection{A*}
+Werkt als een verbeterde versie van Dijkstra, uitgebreid met een heuristic.
+Combineert de kosten van naar een node van start met een heuristic om te kijken welke node er vervolgens bezocht moet worden.
+Als de heuristic een onderschatting is zal A* het optimale pad vinden met het minimaal aantal node te bezoeken.
+
+Path evaluation:
+$F(v) = G(v) + H(v)$
+$F(v)$ is het geschatte totaal minimum kosten van een pad van een geven punt naar het doel.
+$G(v)$ is de bekende kosten van het start punt naar een geven punt op de graaf, volgens het rekende shortest path.
+$H(v)$ is de geschatte kosten om te verplaatsen van het gegeven punt naar het doel door middel vaen heuristic.
+
+\subsubsection{Grad path}
+Path finding kan ook op een grid, in dit geval kan je het grit representeren als een graaf opgeslagen in een 2 dimensionale array.
+Het is mogelijk een pad te maken in 8 richtingen van een positie in het grid.
