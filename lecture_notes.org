@@ -1656,3 +1656,60 @@ Graph Search Heuristics, A\*-search
 
 * 7, lecture 14, 2021-01-06
 State Machine Algorithm
+
+** 00:00 Finite state machine
+    - elk programma is een state machine:
+        - geheugen is een state
+        - methode instructie, event is een transactie
+    - model voor mechanische machine
+        - schakelaar voor transitie
+    - regular expressie
+    - model voor artifical intelligence
+
+    - behaviour model
+    - element
+        - finite number of state
+        - transition
+        - action
+
+** 08:00 Transition table
+    - heeft states en inputs
+
+** 09:00 
+    - Mealy machine
+        - FSM waar output waard bepaald zijn bij de curren state en current input
+    - Moore Machine
+        - FSM waar output waardes alleen zijn bepaald bij de huidige state
+
+** 14:00 formal definition
+    - set input symbols I
+    - set output symbols O
+    - set states S
+    - state transitie functie f: S * I -> S
+    - output functie: g: S * I -> O
+    - start state O -= S
+
+** 44:00 Finite state machine in code
+    - switch statment gebaseerd op huidige state en input
+        - schaalt niet en aanpassen is lastig 
+    - toegepast in GUIs met meerdere frames
+    - leest transitie tabel
+    - state design pater
+
+** 55:00 state design pattern
+    - een set van behaviours ingekapseld in state objecten
+    - een object, de context, heeft een state object
+    - op elk moment kan de context gedelegeerd worden in een van deze states
+    - de huidige state veranderd in een van de state objecten in de set
+    - het gedrag van de context lijkt te veranderen
+    - een client van de context weet niets over de state objecten
+
+** 60:00 state design diagram
+    - context
+        - houd de interne states
+    - state (interface)
+        - kunnen interchangable gebruikt worden
+    - concrete state (object)
+        - heeft eigen implementatie voor een request van de context
+        - verteld naar welke andere state je kan gaan 
+        - behandelen requests van de context

@@ -1,3 +1,25 @@
 \section{State Machine}
 Dit hoofdstuk gaat over State Machine.
 % State Machine Algorithm
+
+Model voor een systeem waarbij het model bestaat uit een eindig aantal states, overgang tussen te states, en acties.
+Dit is een design patroon voor applicaties, dit gebeurt bijvoorbeeld op basis van de input.
+Elk programma is in principe een state machine, waar geheugen de state is en een methode of event een transactie.
+Voorbeelden: Regular expression, model voor artifical intelligence.
+
+\textbf{Mealy machine}: output waarde bepaald door middel van de current state en input.
+\textbf{Morre machine}: output waarde wordt alleen bepaald door middel van de huidige state.
+
+\subsection{Formele definitie}
+Set van input symbolen: I.
+Set output symbolen: O.
+Set van states: S.
+State transitie functie: $F: S*I -> S$.
+Output functie: $G: S*I -> O$.
+
+\subsection{State design pattern}
+Wanneer er gebruik gemaakt zou worden voor een switch statement voor het verwerken van inputs voor verschillende states heeft een paar negatieve gevolgen.
+Het schaalt niet en aanpassen is lastig, daarom wordt er gebruik gemaakt van het state design pattern.
+Een context klasse interat met state klasses door middel van een state interface.
+De state klasses heeft een eigen implementatie voor de requests van uit de context.
+De client die de context klasse gebruikt weet niets van deze veranderingen van state.
