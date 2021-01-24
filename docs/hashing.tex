@@ -5,7 +5,7 @@ Voorbeeld: versleutelen van een wachtwoord.
 
 \subsection{Java hashing}
 Voor Java collections is de hash een operatie dat een waarde verstrooid / mapped naar een willekeurige integer.
-In vergelijking met standaard hashing deze hash mogelijk onomkeerbaar, door dat er mogelijk duplicaten ontstaan, maar het lieft zo weinig mogelijk.
+In vergelijking met standaard hashing is /deze hash mogelijk onomkeerbaar, door dat er mogelijk duplicaten ontstaan, maar het lieft zo weinig mogelijk.
 Data structuren gebaseerd op hash zijn: HashSet en HashMap, voor de elementen moet \texttt{hashCode} en \texttt{equals} correct geïmplementeerd zijn.
 
 als methode \texttt{equals} waar is moet de methode \texttt{hashCode} ook hetzelfde zijn.
@@ -36,7 +36,7 @@ Stappen:
 De hash gaat in hashCode methode.
 De uitkomst wordt modulo de lengte van de interne array gedaan om de voorgestelde index te krijgen.
 Er wordt gecontroleerd of de voorgestelde index collisions opleverd.
-De een method om collisions op te lossen geeft een nieuwe voorgestelde index.
+Een method om collisions op te lossen geeft een nieuwe voorgestelde index.
 Herhaal tot er een open index gevonden is, dat is de uiteindelijke index.
 
 \subsection{Collisions}

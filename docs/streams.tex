@@ -6,14 +6,14 @@ De Collectie interface implementeert de \texttt{Stream}, dus het wordt door iede
 Er zijn twee soorten methodes voor een stream.
 \textbf{Mapper}: dit is een tussenligende steam bewerkingen, en geeft een stream terug.
 Zoals, \texttt{filter()} met een functionele interface als parameter.
-\textbf{Reducer}: dit is een terinale methode, stopt de stream.
+\textbf{Reducer}: dit is een terminale methode, stopt de stream.
 Zoals, \texttt{count()} dat het aantal elementen telt.
 
 \subsection{Lazy}
 Er vindt pas een bewerking op de databron plaats wanneer de terminal oparation is begonnen.
 Dat betekend dat een element eerst door de complete pipeline gaat voor het volgende element opgevraagd wordt.
 Het geheugen efficientie van de meeste stream operations is daarom $O(1)$.
-Grote databronnen kunnen verwerkt worden met een lage gehugen voetprint.
+Grote databronnen kunnen verwerkt worden met een lage geheugen voetprint.
 
 \subsection{Method chaining}
 Ook bekend als dot-chaining, verbeterd de code beknoptheid en leesbaarheid.
@@ -56,7 +56,7 @@ Voorbeelden:
 Maak een set van alle boeken voor 2000:
 \texttt{.stream().filter(b -> yearOfIssue < 2000).collect(collectors.toSet())}
 Bereken gemiddelde nummer van autheurs per boek:
-\texttt{.stream()collect(Collectors.averagingDouble(b -> b.getAuthors().size()))}
+\texttt{.stream().collect(Collectors.averagingDouble(b -> b.getAuthors().size()))}
 Maak een lijst van alle titels van boeken met meer dan drie auteurs:
 \texttt{.stream().map(Book::getTitle).collect(Collectors.joining("\\n", "- book titles", "-"))}
 
@@ -100,7 +100,7 @@ Nadeel is dat het streams minder efficient maken omdat elementen eerst gesorteer
 \subsection{Stream operations}
 Operaties op de stream moeten niet interferend zijn, niet de born van de stream aanpassen.
 In de meeste gevallen staatloos zijn, niet afhankelijk van veranderingen in de staat tijdens uitvoren van de pipeline.
-Vermijd bijwerkingen, veranderen van globale data buten de scope van de pipeline.
+Vermijd bijwerkingen, veranderen van globale data buiten de scope van de pipeline.
 
 \subsection{Forks}
 Streams kunnen na het uitvoeren van een terminal operations niet opnieuw gebruikt worden.

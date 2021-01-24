@@ -18,7 +18,7 @@ Een referentie naar een statische methode mee geven: \texttt{.sort(Author::compa
 De statische methode is gedefineerd in de Author klasse: \texttt{public static int compareByInitials2(Author a1, Author a2) \{ ... \}}.
 
 \subsubsection{Instantie methode}
-Vergelijk objectmet huidige instantie.
+Vergelijk object met huidige instantie.
 Geef een referentie naar een methode van de instantie: \texttt{.sort(Author::compareByInitials)}.
 De methode geimplementeerd in de Author klasse: \texttt{public int compareByInitials(Author o) \{ ... \}}
 
@@ -30,12 +30,12 @@ Origneel een wiskundig formalisme in de theoretische informatica.
 Het 'bewijst' de uitkomst van berekeningen door manipulatie van functionele uitdrukkingen.
 
 \subsubsection{Java lambda}
-In Java wordt lambda gebruikt als compate notatie om een instantie van een functionele interface te maken.
+In Java wordt lambda gebruikt als compacte notatie om een instantie van een functionele interface te maken.
 Ook genoemd als arrow notation of anonymous function.
 Het wordt geformateerd als \texttt{(parameter) -> expressie afhankelijk van parameters}.
 
 \subsection{Predicate}
-Functionele interface mte parameter dat een boolean terug geeft, handig voor onder andere filter criteria.
+Functionele interface met parameter dat een boolean terug geeft, handig voor onder andere filter criteria.
 Methode die een predicate implementeerd: \texttt{public Set <Book> findBooks(Predicate<Book> filter) \{ ... \}}.
 Te gebruiken met: \texttt{.findBooks(book -> book.yearOfIssue < 2000)}.
 

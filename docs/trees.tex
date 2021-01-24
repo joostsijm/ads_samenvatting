@@ -1,7 +1,7 @@
 \section{Tree}
 Dit hoofdstuk bespreekt trees, wat een type graaf is.
-Het heeeft de eigenschappen:
-Heeft geen cyclus, een edge toevoegen zou een cyclus maken, als je een edge weg haald is de graaf opgebroken.
+Het heeft de eigenschappen:
+Bevat geen cyclus, een edge toevoegen zou een cyclus maken, als je een edge weg haald is de graaf opgebroken.
 Een tree kan leeg zijn.
 
 Recursieve definitie:
@@ -16,7 +16,7 @@ Graad is het aantal verbonden childeren van een node
 Een tree in een gerichte graaf.
 Er is exact een node met input graad gelijk aan 0, dat is de root node.
 Elke andere node heeft een input graad van 1
-elke node heeft een gericht pad van de root nar die node.
+elke node heeft een gericht pad van de root naar die node.
 
 \subsection{Terminologie}
 \textbf{Node}: Element in de tree.
@@ -31,7 +31,7 @@ elke node heeft een gericht pad van de root nar die node.
 \textbf{Depth}: Afstand van root node (level).
 
 \subsection{Implementatie}
-Tree klasse bevat root node, heeft methodes voro \texttt{find}, \texttt{insert()}, \texttt{delete()}.
+Tree klasse bevat root node, heeft methodes voor \texttt{find}, \texttt{insert()}, \texttt{delete()}.
 Node klasse bevat een LinkedList of een ArrayList van child nodes.
 Alle nodes in de lijst van child nodes wijzen naar een andere tree nodes.
 
@@ -46,10 +46,10 @@ Implementatie: \textbf{LinkedList}, node klasse met veld voor parent, linker, en
 \subsubsection{Traversing}
 Nodes in een binary tree kunnen vermeld worden in een paar specifieke volgorde.
 \textbf{Preorder}: root, left right, naar beneden, links van node.
-\textbf{Inorder}: root left right, nar rechts, onderkant van node.
+\textbf{Inorder}: root left right, naar rechts, onderkant van node.
 \textbf{Postorder}, left right root, naar boven, rechts van node.
 
-\subsubsection{Binary search tree BST}
+\subsubsection{Binary search tree (BST)}
 Het opslaan van data in een tree om zoeken te versnellen, data moet sorteerbaar zijn (Comparable).
 Nodes links zijn kleiner dan root, nodes recht zijn groter dan root.
 \textbf{TreeSet}: Nodes zijn waardes.
@@ -66,7 +66,7 @@ Reset de referenties op de weg omhoog.
 
 \subsubsection{Search}
 Start bij de root node.
-Als het element gelijk is aan de nodige is het gevonden.
+Als het element gelijk is aan de node is het gevonden.
 Als node groter dan element ga naar links, anders naar rechts.
 Wanneer child leeg is is het niet in de collectie, anders herhaal.
 De efficientie is gemiddeld $O(\log n)$ en is het slechtse geval $O(n)$.
@@ -76,7 +76,7 @@ Geef de waarde geassocieerd met de sleutel of null als de key niet gevonden kan 
 \textbf{While Loop}: maak een node variable aan met waarde de root node.
 Start en while loop zo lang de node variable niet null is.
 Vergelijk de key met de waarde die je zoekt.
-Als he lager ipak de linker node, ander rechter node.
+Als he lager is pak de linker node, ander rechter node.
 Als het gelijk is return.
 \textbf{Recursie}: Roep private methode aan met node en key.
 Als node null is return null.
@@ -101,6 +101,6 @@ Grootste waarde <= gegeven waarde.
 Kleinste waarde <= gegeven waarde.
 
 \subsubsection{Floor berekenen}
-Te zoeken key k, als k e gelijk is aan root is root de floor.
+Te zoeken key k, als k gelijk is aan root is root de floor.
 Als k kleiner is dan root ga je naar links.
 Als k groter is dan root, floor is de rechter sub-tree als er een key kleiner is dan k in de rechter sub-tree, anders it het de key van root.

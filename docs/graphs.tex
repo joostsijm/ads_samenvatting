@@ -62,10 +62,10 @@ Bijvoorbeeld: afstand, reistijd, weestand van elektriciteit, verschil in hoogte.
 
 \subsection{Minimum spanning tree}
 In een weighted graph is dit een tree waar van de som van alle gewichten minimaal is.
-Alle edges moeten verbonden, wanneer er edges zijn met hetzelfde gewicht kan het zijn dat er meerdere MST zijn.
+Alle edges moeten verbonden zijn, wanneer er edges zijn met hetzelfde gewicht kan het zijn dat er meerdere MST zijn.
 
 \subsubsection{Datastructure MST}
-Edges worden in een eige klasse gerepresenteerd, met de velden van en naar node en double gewicht.
+Edges worden in een eigen klasse gerepresenteerd, met de velden van en naar node en double gewicht.
 De klasse EdgeWeightedGraph heeft een veld voor het aantal nodes en een adjacency list voor edges.
 
 \subsubsection{Cut property}
@@ -105,7 +105,7 @@ Maakt een shortest path tree van af een start node naar iedere toegankelijke nod
 Algoritmes die dit doen: Dijkstra, Floyd, A*.
 
 \subsubsection{Dijkstra's shortest path}
-Extend de spanning tre met een edge dat je de kortste afstand geeft van af de start node.
+Extend de spanning tree met een edge dat je de kortste afstand geeft van af de start node.
 Operatie:
 Van af de start node kijken naar de aanliggende node met de laagte weight.
 Noteer de weight van af start naar de node.
@@ -144,7 +144,7 @@ Dit wordt gebruikt in algoritmes wanneer klasieke methodes falen in het vinden v
 Snelheid over compleetheid, nauwkeurigheid, en precisie.
 
 Mogelijkheden voor een heuristic in path finding is bijvoorbeeld de straight line distance naar het doel.
-Dit gebruit worden door een lookup table of het berekend door gebruik te maken van de coördinaten en de stelling van Pythagoras.
+Dit gebeurt worden door een lookup table of het berekend door gebruik te maken van de coördinaten en de stelling van Pythagoras.
 
 \subsubsection{A*}
 Werkt als een verbeterde versie van Dijkstra, uitgebreid met een heuristic.
@@ -157,6 +157,6 @@ $F(v)$ is het geschatte totaal minimum kosten van een pad van een geven punt naa
 $G(v)$ is de bekende kosten van het start punt naar een geven punt op de graaf, volgens het rekende shortest path.
 $H(v)$ is de geschatte kosten om te verplaatsen van het gegeven punt naar het doel door middel vaen heuristic.
 
-\subsubsection{Grad path}
+\subsubsection{Grid path}
 Path finding kan ook op een grid, in dit geval kan je het grit representeren als een graaf opgeslagen in een 2 dimensionale array.
 Het is mogelijk een pad te maken in 8 richtingen van een positie in het grid.

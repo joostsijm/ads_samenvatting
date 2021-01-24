@@ -1,7 +1,7 @@
 \section{OOP}
 % OOP (references, wrappers, generics, interfaces), abstract datatypes, interator, Recursion, Comparator, Big-O efficiency
 Dit hoofdstuk beschrijft de onderwerpen die onder \textit{object oriented programming} vallen, zoals: references, wrappers, generics, interfaces.
-Maar ook enkele geleateerde onderwerpen waar voor geen andere toepasselijk hoefdstuk is. Zoals: abstract datatypes, interator, Recursion, Comparator, Big-O efficiency
+Maar ook enkele geleateerde onderwerpen waar voor geen andere toepasselijk hoefdstuk is. Zoals: abstract datatypes, interator, Recursion, Comparator
 
 \subsection{Objectgeoriënteerd programmeren}
 \index{OOP} wordt gebruikt om de echte wereld te modeleren.
@@ -20,7 +20,7 @@ Kleinere onderdelen zijn makkelijker om mee te werken, in een team, en te testen
 
 \subsubsection{Fundamentele eigenschappen}
 \textbf{Erfenis} (inheritance): mogelijkheid om af te stammen van andere objecten.
-Methodes uit de ouder kunnen overschreven worden, methode behoud de naam, dynamische binding laat polymorphisme toe.
+Methodes uit de parent kunnen overschreven worden, methode behoud de naam, dynamische binding laat polymorphisme toe.
 \textbf{Inkapseling} (encapsulation): beperken van controlle over de manier een object gemanipuleerd kan worden.
 Private properties, public get, set, en andere methodes.
 \textbf{polymorfisme} (polymorphism): vermogen van een object om verschillende vormen aan te nemen.
@@ -55,7 +55,7 @@ Abstractie zorgt voor een lage koppeling tussen objecten, veel ontwerp patronen 
 \subsubsection{Abstracte klasse}
 Kan niet geïnstantieerd worden, vaak is dit in het ontwerp niet wenselijk of logisch.
 Een voorbeeld kan zijn: een vorm, je zou het niet kunnen tekennen zonder het figuur te weten.
-Definieert het type en heeft een constructor, een ouder en kan ouder zijn van een (abstracte) klasse.
+Definieert het type en heeft een constructor, een parent, en kan parent zijn van een (abstracte) klasse.
 Kan (abstracte) methodes en instance fields hebben.
 
 \subsubsection{Interface}
@@ -63,18 +63,18 @@ Functioneert als een belofte van gedrag (methodes), van de klasse die het implem
 Is een puur abstracte klasse om gedrag te defineren met minimale functionaliteit en heeft geen constructor, alleen abstracte methodes.
 
 \subsection{Abstracte data types}
-Zijn datatypes war van de implementatie van de methodes verborgen is.
-Bevat data specefie voro een instante van de abstracte data type met methodes om deze data te bewerken.
+Zijn datatypes waar van de implementatie van de methodes verborgen is.
+Bevat data specifiek voor een instante van de abstracte data type met methodes om deze data te bewerken.
 De data is ingekapseld, het toont slechts enkele van de subprogramma's.
-Bijvoorbeeld een list pebruikt een array en laat de gebruiker door middel van een interface bewerken.
-Voor komt direct bewerken van de indices in de array.
+Bijvoorbeeld een list gebruikt een array en laat de gebruiker het door middel van een interface bewerken.
+Voorkomt direct bewerken van de indices in de array.
 
 \subsubsection{Generics}
 Java is een statisch getypeerde programmeertaal, types moeten van te voren gedefineerd zijn.
-Een generics zorgt er voor dat een abstracte data type geparametriseerd kan worden.
+Een generic zorgt er voor dat een abstracte data type geparametriseerd kan worden.
 Het zorgt er voor dat het type pas later gespecificeerd kan worden, de generic functioneert als een parameter in de klasse declaration.
-Zonder zou ieder object in ongecontrolleerd in een collectie toegevoegd kunnen worden.
-Bij het ophalen van het object moet het eerst gedowncast worden om te gebruiken.
+Zonder zou ieder object ongecontrolleerd in een collectie toegevoegd kunnen worden.
+Bij het ophalen van het object zal het eerst gedowncast moeten worden om te kunnen gebruiken.
 
 \subsubsection{Java Collections API}
 Java implementatie van abstracte data types, \texttt{java.util.Collection}.
@@ -83,7 +83,7 @@ Bevat bijna ieder type van collectie.
 
 \subsubsection{Iterable}
 Is een interface dat door een collectie geimplementeerd word, returned \textbf{Iterator}.
-Dat is ook een interface, geimplementeerd door een private klass binnen de collectie klasse bevat \texttt{hasNext()} en \texttt{next()} methodes.
+Dat is ook een interface, geimplementeerd door een private klass binnen de collectie klasse, bevat \texttt{hasNext()} en \texttt{next()} methodes.
 Maakt het makkelijk om een collectie in een loop te zetten.
 Een \textbf{for each} is een shorthand versie van een while loop die gebruikt maakt van de iterator.
 
@@ -96,7 +96,7 @@ Een \textbf{for each} is een shorthand versie van een while loop die gebruikt ma
         HashSet     & Set door middel van een hash table - ongeordend \\
         Hashtable   & Een collectie van [key, data] paren - ongeordend \\
         LinkedList  & Een gekoppelde lijst \\
-        Stack Last  & Laatste er in, eerste er uit (LIFO) data structuur \\
+        Stack       & Laatste er in, eerste er uit (LIFO) data structuur \\
         TreeMap     & [key,data] paren, gehouden in aflopende volgorde \\
         TreeSet     & Sit geimplementeerd als een tree \\
         \bottomrule
@@ -135,10 +135,23 @@ Verschillende manier om op een oplossing te komen.
 Wanneer een klasse dit implementeerd kan het vergeleken worden met een andere instantie van deze klasse.
 Door middel van de \texttt{compareTo()} methode die in de klas is geimplementeerd.
 De methode heeft een ander object als parameter waar het dan mee vergelijkt wordt en returned een integer.
-Als de huidige instantie voor de megegeven instantie moet komen geeft het iets kleiner dan 0, anders hoger dan 0, als het gelijk is geeft het 0 terug.
+Als de huidige instantie voor de meegegeven instantie moet komen geeft het iets kleiner dan 0, anders hoger dan 0, als het gelijk is geeft het 0 terug.
 De meeste standaard klassen implementeren de comparator, dit gebeurt op natuurlijke ordering: A-Z, a-z, 0-9, etc.
 
 \subsubsection{Comparator}
 Is een extra sorteert klasse, die binnen of buiten de klasse gedeclareerd kan worden.
 Zorgt er voor dat je op andere manieren kan sorteren.
 Vergelijkt twee instanties van klassen met de \texttt{compare} methode.
+
+
+\subsection{Builder patern}
+Gebruikt een klasse met als eenig doel te assisteren in het incrementeel aanmaken van objecten van een andere klasse.
+Managed het maken van complexe objecten, stap voor stap, zorgt er voor dat integeriteit gewaarborgd wordt.
+Kan het performance van het aanmaken van objecten verbeteren en zorgt voor goede leesbaarheid.
+Builder zit vaak als interne klasse van de collectie en heeft een prive collectie die opgebouwd wordt.
+Voorbeeld: Boek registratie applicatie kan voorkomen dat dezelfde auteurs meerdere keren voorkomen.
+
+\subsubsection{StringBuilder}
+Is een voorbeeld van builder patern.
+Nieuwe strings toevoegen aan instantie van StringBuilder met \texttt{append()}.
+Wanneer alles toegevoegd is geeft \texttt{toString()} de gemaakte string terug.

@@ -23,7 +23,7 @@ Deze node is een prive klasse die de waarde vasthoud en een \texttt{next} proper
 De list zelf houd een referentie naar de eerste, \texttt{head}, en laatste, \texttt{tail}, node bij.
 \textbf{Add} maak een node aan met de opgegeven waarde.
 Controller of \texttt{head} bestaat, zo niet verwijst die naar deze node.
-Anders wordt de node toevegoed aan de \texttt{next} van van \texttt{tail}
+Anders wordt de node toevegoed aan de \texttt{next} van van \texttt{tail}.
 Vervolgens wordt \texttt{tail} vervangen met de nieuwe node.
 \textbf{Get} voor het terughalen van een index begin je bij \texttt{head} en tel je \texttt{next} tot je bij de gewenste index bent.
 \textbf{Exists}, loop over de nodes van af \texttt{head}, wanneer er een match is return \texttt{true}, als er geen match is return \texttt{false}.
@@ -64,7 +64,7 @@ Operations:
 \subsubsection{Heap}
 Ook wel het zelfde als een priority queue.
 Heeft als structuur een binary tree dat is geïmplementeerd met een array.
-Eerst item begint op 1, van linker child $index \times 2$, voor rechter child $index \times 2 + 1$, voor parent $\frac{index}{2}$.
+Eerste item begint op 1, van linker child $index \times 2$, voor rechter child $index \times 2 + 1$, voor parent $\frac{index}{2}$.
 Elk pad van af root geeft een ordered list, maar er is geen traveral mogelijk want het is weakly ordered.
 Efficientie: toevoegen / verwijderen: $O(\log N)$, zoeken $O(N)$.
 \textbf{Verwijderen}: return gewenste index, zet laatste node op deze plek en voer sink op deze index uit.
